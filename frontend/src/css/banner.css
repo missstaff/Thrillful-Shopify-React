@@ -1,0 +1,10 @@
+.banner{
+    background-color: aquamarine;
+    position: relative;
+    height: 50vh;
+    width: 100%;
+}
+
+.imageBox{
+    height: 50vh;
+}
