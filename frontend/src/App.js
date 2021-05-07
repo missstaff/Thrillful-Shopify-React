@@ -29,7 +29,7 @@ function App() {
           <Route path="/adminbanner/">         
             <AdminBanner/>
             </Route>
-            <Route path="/signin" component={Signin}>         
+            <Route path="/signin/" component={Signin}>         
             <Signin/>
             </Route>
           <Route path="/all-products/">

@@ -5,8 +5,8 @@ import Client from 'shopify-buy';
 const ShopContext = React.createContext();
 /*Builds the client gets api credentials from .env file */
 const client = Client.buildClient({
-    storefrontAccessToken: process.env.REACT_APP_SHOPIFY_API,
-  	domain: process.env.REACT_APP_SHOPIFY_DOMAIN
+    storefrontAccessToken: '955c6f5a46ee1f803914123685d31acf',
+  	domain: 'thrillfuldevelopment.myshopify.com'
   });
 
 
