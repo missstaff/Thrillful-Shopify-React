@@ -16,6 +16,7 @@ class ShopProvider extends Component {
     state = {
         product: {},
         products: [],
+        productVariants: [],
         checkout: {},
         collections: [],
         collection: [],
@@ -111,10 +112,13 @@ class ShopProvider extends Component {
     }
 
     /*using handle to fetch a product by name so the product name is in the browser link not a number~bette for SEO and branding*/
+    // add product.variants in order to get sizes
     fetchProductWithHandle = async (handle) => {
         const product = await client.product.fetchByHandle(handle)
+        const prodVariants = product.variants
         //updates the state//
         this.setState({ product: product })
+        this.setState({ productVariants: prodVariants})
     }
 
     /*Fetches all collections*/ 
