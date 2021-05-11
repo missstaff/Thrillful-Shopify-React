@@ -17,7 +17,12 @@ export default function SigninScreen() {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" className="SigninForm">
 
-      <FormControl id="email" isRequired className="form" onSubmit={submitHandler}>
+      {/* Sign In is Email and PW 
+      Link to forgot pw
+      Link to register if not alreay
+      */}
+
+      <FormControl className="form" onSubmit={submitHandler}>
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
           type="email"
@@ -38,6 +43,12 @@ export default function SigninScreen() {
           onChange={(e) => setPassword(e.target.value)}
         ></Input>
 
+        {/* Need to have it link to a generate new PW page or popup */}
+
+        <Text>
+          Lost Password
+          </Text>
+
         <br></br>
 
         <Center>
@@ -52,9 +63,10 @@ export default function SigninScreen() {
 
         <Center>
           <Text>
-          New customer? 
-            <Link to="/register" color="red.500">Create your account</Link>
+            New customer?
+            <Link to="/Register" color="red.500">Create your account</Link>
           </Text>
+
         </Center>
 
       </FormControl>
