@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../context/shopContext'
-import { Box, Grid, Text, Image, Center } from '@chakra-ui/react'
+import { Box, Grid, Text, Heading, Image, Center } from '@chakra-ui/react'
 
 
 const Products = () => {
@@ -15,22 +15,25 @@ const Products = () => {
     if (!products) return <div>Loading...</div>
     return (
         <Box p="2rem">
+            <Center>
+                <Heading>All Products</Heading>
+            </Center>
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                 {
                     products.map(product => (
                         <Link to={`${product.handle}`} key={product.id}>
                             <Box _hover={{ opacity: '80%' }} textAlign='center'/*move text here*/>
-                                <Image src={product.images[0].src} p="2rem" h="25rem" w="25rem" m="2.5rem" /> 
-                               <Center>
-                               <Text>
-                                    {product.title}
-                                </Text>
-                               </Center>
-                               <Center>
-                               <Text>
-                                    ${product.variants[0].price}
-                                </Text>
-                               </Center>
+                                <Image src={product.images[0].src} p="2rem" h="25rem" w="25rem" m="2.5rem" />
+                                <Center>
+                                <Text style={{ fontWeight: "bold" }}>
+                                        {product.title}
+                                    </Text>
+                                </Center>
+                                <Center>
+                                    <Text>
+                                        ${product.variants[0].price}
+                                    </Text>
+                                </Center>
                             </Box>
                         </Link>
                     ))
