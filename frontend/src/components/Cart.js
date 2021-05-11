@@ -28,7 +28,7 @@ const Cart = () => {
     // continue shopping 
     const history = useHistory();
     const continueShoppingRoute = () => {
-        let path = `/all-products`;
+        let path = `/collections`;
         history.push(path);
     }
     // const testId = "ABC";
