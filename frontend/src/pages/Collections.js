@@ -23,14 +23,16 @@ const Collections = () => {
                 {
                     collections.map(collection => (
                         <Link to={`/${collection.id}`} key={collection.id}>
+                            <Center>
                             <Box _hover={{ opacity: '80%' }} textAlign='center'/*move text here*/>
                                 <Image src={collection.image.src} p="2rem" h="25rem" w="25rem" /> 
                                <Center>
-                               <Text>
+                               <Text style={{fontWeight:"bold"}}>
                                     {collection.title}
                                 </Text>
                                </Center>
                             </Box>
+                            </Center>
                         </Link>
                     ))
                 }
