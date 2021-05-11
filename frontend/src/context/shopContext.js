@@ -1,3 +1,4 @@
+  
 import React, { Component } from 'react';
 import Client from 'shopify-buy';
 
@@ -16,10 +17,14 @@ class ShopProvider extends Component {
     state = {
         product: {},
         products: [],
+        // productVariants: [],
         checkout: {},
         collections: [],
         collection: [],
         collectionName:"",
+        lineItems: [],
+        lineItemToUpdate: [{id: "", qty: 0}],
+        quantity: 0,
         /*for cart slide out functionality*/
         isCartOpen: false,
          /*for menu slide out functionality*/
@@ -72,6 +77,32 @@ class ShopProvider extends Component {
         this.setState({ checkout: checkout })
     }
 
+        /* Update Line Item Quantity
+        (checkoutId, Line item to update) */
+        updateLineItem = async (checkoutId, lineItemToUpdate) => {
+            // Update the line item on the checkout (change the quantity or variant)
+            client.checkout.updateLineItems(checkoutId, lineItemToUpdate).then((checkout) =>{
+                const lineItems = checkout.lineItems;
+                this.setState ({ checkout: checkout })
+                // array of items in cart
+                this.setState ({ lineItems: lineItems})
+                this.setState ({ lineItemToUpdate: [{id: lineItems.id, qty: lineItems.quantity}]})
+                // this.setState ({ lineItemId: lineItemToUpdate.id})
+                // this.setState ({ lineItemQty: lineItemToUpdate.quantity})
+    
+                console.log("line item to update in context method: ", lineItemToUpdate)
+                console.log("line item to update in context method: ", lineItems)
+            })
+        }
+    
+        // updateLineItem = async (checkoutId, lineItemToUpdate) => {
+        //     // Update the line item on the checkout (change the quantity or variant)
+        //     const checkout = await client.checkout.updateLineItems(this.state.checkout.id, lineItemToUpdate)
+        //     const lineItems = checkout.lineItems;
+        //     this.setState = ({ checkout: checkout })
+        //     this.setState = ({ lineItems : lineItems})        
+        // }
+
 
      /*Gets all products*/ 
     fetchAllProducts = async () => {
@@ -82,10 +113,13 @@ class ShopProvider extends Component {
     }
 
     /*using handle to fetch a product by name so the product name is in the browser link not a number~bette for SEO and branding*/
+    // add product.variants in order to get sizes
     fetchProductWithHandle = async (handle) => {
         const product = await client.product.fetchByHandle(handle)
+        // const prodVariants = product.variants
         //updates the state//
         this.setState({ product: product })
+        // this.setState({ productVariants: prodVariants})
     }
 
     /*Fetches all collections*/ 
@@ -113,6 +147,16 @@ class ShopProvider extends Component {
 
     render() {
         /*console.log(this.state.checkout)*/ //TEST TRASH SHOWS CHECKOUT PAYLOAD//
+
+            // TEST update line item
+        // const checkoutId = 'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80YzRhM2E1MDVlZDJiYTk1MzJjMzQwNGY5YTM5M2Y0ZT9rZXk9YTdhODM0YWQyYmM5NzJiNmZiNGI4ZTEwZGI1NmY2ZWE=';
+        // const lineItemToUpdate = [
+        //     { id: 'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzM5NzAwMTQyNDU3MDAwMD9jaGVja291dD00YzRhM2E1MDVlZDJiYTk1MzJjMzQwNGY5YTM5M2Y0ZQ==', quantity:5 }
+        // ];
+        // const updated = this.updateLineItems(checkoutId, lineItemToUpdate);
+        // console.log("updated: ", updated);
+        // this.updateLineItem(checkoutId, lineItemToUpdate)
+        
         return (
             <ShopContext.Provider value={{
                 ...this.state,
