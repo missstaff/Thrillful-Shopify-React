@@ -15,7 +15,7 @@ export default function SigninScreen() {
     dispatch(signin(email, password));
   };
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" className="SigninForm">
+    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" className="SigninForm" marginTop="10px" marginBottom="10px">
 
       {/* Sign In is Email and PW 
       Link to forgot pw
@@ -46,8 +46,8 @@ export default function SigninScreen() {
         {/* Need to have it link to a generate new PW page or popup */}
 
         <Text>
-          Lost Password
-          </Text>
+          Forgot Password
+        </Text>
 
         <br></br>
 
@@ -63,8 +63,8 @@ export default function SigninScreen() {
 
         <Center>
           <Text>
-            New customer?
-            <Link to="/Register" color="red.500">Create your account</Link>
+            New customer? 
+            <Link to="/Register" style={{color: "#ff0000" }}> Create your account</Link>
           </Text>
 
         </Center>
