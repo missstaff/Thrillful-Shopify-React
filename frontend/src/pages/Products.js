@@ -22,6 +22,7 @@ const Products = () => {
                 {
                     products.map(product => (
                         <Link to={`${product.handle}`} key={product.id}>
+                            <Center>
                             <Box _hover={{ opacity: '80%' }} textAlign='center'/*move text here*/>
                                 <Image src={product.images[0].src} p="2rem" h="25rem" w="25rem" m="2.5rem" />
                                 <Center>
@@ -35,6 +36,7 @@ const Products = () => {
                                     </Text>
                                 </Center>
                             </Box>
+                            </Center>
                         </Link>
                     ))
                 }
