@@ -28,7 +28,7 @@ const Product = () => {
                    <Rating>
 
                    </Rating>
-                   <Select placeholder="Size" marginTop="10">
+                   <Select placeholder="Size" marginTop="10" size="sm" w="22%">
                         <option value="sm">Small</option>
                         <option value="md">Medium</option>
                         <option value="lg">Large</option>
