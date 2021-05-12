@@ -31,25 +31,6 @@ const Cart = () => {
         let path = `/collections`;
         history.push(path);
     }
-    // const testId = "ABC";
-    // const testqty = 19;
-    // lineItemToUpdate.id = testId;
-    // lineItemToUpdate.qty = testqty;
-
-    // TEST shopping cart details
-    console.log("checkout cart: ", checkout);
-    console.log("lineItemToUpdate: ", lineItemToUpdate);
-    console.log("lineItems: ", lineItems);
-
-    // TEST update line item
-        // const checkoutId = 'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80YzRhM2E1MDVlZDJiYTk1MzJjMzQwNGY5YTM5M2Y0ZT9rZXk9YTdhODM0YWQyYmM5NzJiNmZiNGI4ZTEwZGI1NmY2ZWE=';
-        // const lineItemToUpdate = [
-        //     { id: 'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzM5NzAwMTQyNDU3MDAwMD9jaGVja291dD00YzRhM2E1MDVlZDJiYTk1MzJjMzQwNGY5YTM5M2Y0ZQ==', quantity:2 }
-        // ];
-        // updateLineItem(checkoutId, lineItemToUpdate);
-
-
-
     return (
         < >
             <Drawer
@@ -94,7 +75,6 @@ const Cart = () => {
                                         <Button size="xs"marginRight="2" onClick={() => alert(item.quantity - 1)}>-</Button>  
                                         {(item.quantity) }
                                         <Button size="xs" marginLeft="2" onClick={() => alert(item.quantity + 1)}>+</Button>
-                                        {/* <Button size="xs" onClick={() => updateLineItem(checkout.id, lineItems.id) - 1}>-</Button>                                               */}
                                         </GridItem>
                                     </Grid>
                                 )) :
