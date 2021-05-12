@@ -2,43 +2,27 @@ import React from 'react';
 import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
 import '../css/form.css';
 
-
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import { Container, Row} from 'react-bootstrap';
-//import { Input, Textarea } from "@chakra-ui/react";
-
-// const Contact = () => {
-//     return (
-//         <Container>
-//             <Row>
-//                 <Input placeholder="First Name" />
-//                 <Input placeholder="Last Name" />
-
-//                 <Input placeholder="Email" />
-//                 <Input placeholder="Phone Number" />
-
-//                 <Input placeholder="Subject" />
-
-//                 <Textarea placeholder="Write your message here" />
-//             </Row>
-//         </Container>
-
-//below is just to make compiler happy for now//
-
 const Contact = () => {
+
+
+
+
     return (
-        <Box>
-            <FormControl id="firstName" isRequired>
+        <Box maxW="lg" borderWidth="1px" borderRadius="lg"  className="contactForm" marginTop="10px" marginBottom="10px">
+           <Center fontSize="25px">
+               Contact Us
+            </Center> 
+            <FormControl id="firstName" className="contactForm" isRequired>
+                <FormLabel>First Name</FormLabel>
+                <Input placeholder="First name" />
+            </FormControl>
+
+            <FormControl id="lastName" className="contactForm" isRequired>
                 <FormLabel>Last Name</FormLabel>
                 <Input placeholder="First name" />
             </FormControl>
 
-            <FormControl id="lastName" isRequired>
-                <FormLabel>Last Name</FormLabel>
-                <Input placeholder="First name" />
-            </FormControl>
-
-            <FormControl id="email" isRequired>
+            <FormControl id="email" className="contactForm" isRequired>
                 <FormLabel>Email address</FormLabel>
                 <Input type="email" />
 
@@ -70,8 +54,3 @@ export default Contact
 
 
 
-
-//     )
-// }
-
-// export default Contact

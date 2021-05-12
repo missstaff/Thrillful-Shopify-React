@@ -1,5 +1,5 @@
 .SigninForm{
-     margin: auto;
+    margin: auto;
   width: 50%;
   border: 3px solid #ff0000;
   padding: 10px;
@@ -13,6 +13,14 @@
   }
 
 #message{
-    font-size: 100px; 
-    width: 400px;
+    font-size: 30px; 
+    width: 500px;
+    height: 250px;
     }
+
+.contactForm{
+    margin: auto;
+    width: 50%;
+    border: 3px solid #000000; ;
+    padding: 10px;
+}
