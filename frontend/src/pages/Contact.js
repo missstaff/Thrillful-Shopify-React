@@ -8,7 +8,7 @@ const Contact = () => {
 
 
     return (
-        <Box maxW="lg" borderWidth="1px" borderRadius="lg"  className="contactForm" marginTop="10px" marginBottom="10px">
+        <Box maxW="lg" borderWidth="5px" borderRadius="lg"  overflow="hidden" className="contactForm" marginTop="10px" marginBottom="10px">
            <Center fontSize="25px">
                Contact Us
             </Center> 
@@ -33,6 +33,7 @@ const Contact = () => {
                 <Input placeholder="Message for Thrillful" />
 
             </FormControl>
+    
 
             <Center>
                 <Button
