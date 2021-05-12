@@ -41,8 +41,7 @@ const Home = () => {
                             </Link>
                         ))
                     }
-                </Grid>
-               
+                </Grid>               
             </Box>
         );
         // <Box>
