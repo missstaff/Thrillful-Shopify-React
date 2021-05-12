@@ -9,7 +9,12 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
+    Button,
+    Grid,
     Text,
+    Flex,
+    Image,
+    Box,
     VStack
 } from "@chakra-ui/react"
 
@@ -17,39 +22,37 @@ import { ShopContext } from '../context/shopContext'
 
 const NavMenu = () => {
 
-    const { isMenuOpen, closeMenu } = useContext(ShopContext)
+    const { isMenuOpen, closeMenu} = useContext(ShopContext)
 
     return (
         <Drawer isOpen={isMenuOpen} onClose={closeMenu} placement="left" size="sm">
             <DrawerOverlay>
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader textAlign="center" _hover={{ color: '#ff0000' }}><Link to="/collections">Collections</Link></DrawerHeader>
+                    <DrawerHeader textAlign="center" color="#ff0000" _hover={{ color: "#000000"}}><Link to="/collections" style={{ fontWeight: "bold" }}onClick={closeMenu}>Collections</Link></DrawerHeader>
                     <DrawerBody backgroundColor="#000000" color="#ff0000" flexDirection="row" alignItems="center" justifyContent="space-between" >
-                        <VStack _hover={{ color: "#ffffff" }} p="2rem">
-                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NDk0NjIyMTIyNA==">All Products</Link>
+                        <VStack _hover={{ color: "#ffffff"}} p="2rem">
+                            <Link to="/all-products" style={{ fontWeight: "bold" }}onClick={closeMenu}>All Products</Link>
                         </VStack>
                         <VStack _hover={{ color: "#ffffff" }} p="2rem">
-                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NTc2MzM1Njg0MA==">Dresses</Link>
+                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NTc2MzM1Njg0MA==" style={{ fontWeight: "bold" }}onClick={closeMenu}>Dresses</Link>
                         </VStack>
                         <VStack _hover={{ color: "#ffffff" }} p="2rem">
-                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5ODU3MjQ1Ng==">Two-Piece Sets</Link>
+                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5ODU3MjQ1Ng==" style={{ fontWeight: "bold" }}onClick={closeMenu}>Two-Piece Sets</Link>
                         </VStack>
                         <VStack _hover={{ color: "#ffffff" }} p="2rem">
-                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5OTUyMjcyOA==">Accessories</Link>
+                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5OTUyMjcyOA==" style={{ fontWeight: "bold" }}onClick={closeMenu}>Accessories</Link>
                         </VStack>
                         <VStack _hover={{ color: "#ffffff" }} p="2rem">
-                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5OTQ1NzE5Mg==">Beauty</Link>
+                            <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5OTQ1NzE5Mg==" style={{ fontWeight: "bold" }}onClick={closeMenu}>Beauty</Link>
                         </VStack>
                     </DrawerBody>
-                    <DrawerFooter flexDirection="column" alignItems="center" justifyContent="space-between" >
-                        <Text _hover={{ color: '#ff0000' }}>
-                            <Link>Logout</Link>
-                        </Text>
+                    <DrawerFooter>
+                        <Text textAlign="center">Footer</Text>
                     </DrawerFooter>
                 </DrawerContent>
             </DrawerOverlay>
-
+            
         </Drawer>
     )
 }
