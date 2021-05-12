@@ -22,6 +22,7 @@ class ShopProvider extends Component {
         collections: [],
         collection: [],
         collectionName:"",
+        collectionTitle: [],
         lineItems: [],
         lineItemToUpdate: [{id: "", qty: 0}],
         quantity: 0,
@@ -112,7 +113,6 @@ class ShopProvider extends Component {
     fetchAllCollections = async () => {
         const collections = await client.collection.fetchAll();
         this.setState({ collections: collections });
-        //console.log("COLLECTIONS ALL", collections); //TEST TRASH
     };
 
     /*Displays all products in a collection*/
@@ -134,7 +134,6 @@ class ShopProvider extends Component {
     render() {
         /*console.log(this.state.checkout)*/ //TEST TRASH SHOWS CHECKOUT PAYLOAD//
 
-
         return (
             <ShopContext.Provider value={{
                 ...this.state,
@@ -144,6 +143,7 @@ class ShopProvider extends Component {
                 removeLineItem: this.removeLineItem,
                 fetchAllCollections: this.fetchAllCollections,
                 fetchCollectionById: this.fetchCollectionById,
+                fetchCollectionByTitle: this.fetchCollectionByTitle,
                 closeCart: this.closeCart,
                 openCart: this.openCart,
                 closeMenu: this.closeMenu,
