@@ -18,11 +18,12 @@ const Products = () => {
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                 {
                     products.map(product => (
-                        <Link to={`${product.handle}`} key={product.id}>
+                        <Link to={`product/${product.handle}`} key={product.id}>
+                            <Center>
                             <Box _hover={{ opacity: '80%' }} textAlign='center'/*move text here*/>
                                 <Image src={product.images[0].src} p="2rem" h="25rem" w="25rem" m="2.5rem" /> 
                                <Center>
-                               <Text>
+                               <Text style={{ fontWeight: "bold" }}>
                                     {product.title}
                                 </Text>
                                </Center>
@@ -32,6 +33,7 @@ const Products = () => {
                                 </Text>
                                </Center>
                             </Box>
+                            </Center>
                         </Link>
                     ))
                 }
