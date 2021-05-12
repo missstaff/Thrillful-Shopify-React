@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Grid, Image, Text, Button, Heading, Flex } from '@chakra-ui/react'
+import { Box, Grid, Image, Text, Button, Heading, Flex, Select } from '@chakra-ui/react'
 import { ShopContext } from '../context/shopContext';
 import Rating from '../components/Rating.js';
 
@@ -28,7 +28,13 @@ const Product = () => {
                    <Rating>
 
                    </Rating>
-                   <Button
+                   <Select placeholder="Size" marginTop="10" size="sm" w="22%">
+                        <option value="sm">Small</option>
+                        <option value="md">Medium</option>
+                        <option value="lg">Large</option>
+                        <option value="xlg">Xtra Large</option>
+                    </Select>
+                    <Button marginTop="10"
                    onClick={() => addItemToCheckout(product.variants[0].id, 1 /*need code to beable to select quantity*/)}
                    _hover={{opacity: '70%'}}
                    w="10rem" backgroundColor="#ff0000" _focus="none"
