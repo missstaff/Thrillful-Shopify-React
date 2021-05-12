@@ -20,7 +20,7 @@ const Collections = () => {
     return (
         <Box p="2rem">
             <Center>
-                <Heading>All Collections</Heading>
+                <Heading>All Categories</Heading>
             </Center>
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                 {
