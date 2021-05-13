@@ -29,7 +29,7 @@ const NavMenu = () => {
             <DrawerOverlay>
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader textAlign="center" color="#ff0000" _hover={{ color: "#000000"}}><Link to="/collections" style={{ fontWeight: "bold" }}onClick={closeMenu}>Collections</Link></DrawerHeader>
+                    <DrawerHeader textAlign="center" color="#ff0000" _hover={{ color: "#000000"}}><Link to="/collections" style={{ fontWeight: "bold" }}onClick={closeMenu}>Categories</Link></DrawerHeader>
                     <DrawerBody backgroundColor="#000000" color="#ff0000" flexDirection="row" alignItems="center" justifyContent="space-between" >
                         <VStack _hover={{ color: "#ffffff"}} p="2rem">
                             <Link to="/all-products" style={{ fontWeight: "bold" }}onClick={closeMenu}>All Products</Link>

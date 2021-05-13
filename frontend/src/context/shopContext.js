@@ -22,9 +22,11 @@ class ShopProvider extends Component {
         collections: [],
         collection: [],
         collectionName:"",
+        collectionTitle: [],
         lineItems: [],
         lineItemToUpdate: [{id: "", qty: 0}],
         quantity: 0,
+        sizes: [],
         /*for cart slide out functionality*/
         isCartOpen: false,
          /*for menu slide out functionality*/
@@ -58,16 +60,16 @@ class ShopProvider extends Component {
     }
 
     /*Add an item to cart*/ //quantity selector ?? here??
-    addItemToCheckout = async (variantId, quantity) => {
+    addItemToCheckout = async (variantId, quantity, sizes) => {
         const lineItemsToAdd = [
             {
                 variantId,
                 quantity: parseInt(quantity, 10),
+                sizes
             }
         ]
         const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)
         this.setState({ checkout: checkout })
-
         this.openCart()
     }
 
@@ -92,7 +94,6 @@ class ShopProvider extends Component {
 
      /*Gets all products*/ 
     fetchAllProducts = async () => {
-
         const products = await client.product.fetchAll()
         //updates the state//
         this.setState({ products: products })
@@ -102,17 +103,19 @@ class ShopProvider extends Component {
     // add product.variants in order to get sizes
     fetchProductWithHandle = async (handle) => {
         const product = await client.product.fetchByHandle(handle)
-        // const prodVariants = product.variants
+        const sizes = product.variants
+        sizes.map(size => (
+           size.title
+        ));
         //updates the state//
         this.setState({ product: product })
-        // this.setState({ productVariants: prodVariants})
+        this.setState({ sizes: sizes })
     }
 
     /*Fetches all collections*/ 
     fetchAllCollections = async () => {
         const collections = await client.collection.fetchAll();
         this.setState({ collections: collections });
-        //console.log("COLLECTIONS ALL", collections); //TEST TRASH
     };
 
     /*Displays all products in a collection*/
@@ -134,7 +137,6 @@ class ShopProvider extends Component {
     render() {
         /*console.log(this.state.checkout)*/ //TEST TRASH SHOWS CHECKOUT PAYLOAD//
 
-
         return (
             <ShopContext.Provider value={{
                 ...this.state,
@@ -144,6 +146,7 @@ class ShopProvider extends Component {
                 removeLineItem: this.removeLineItem,
                 fetchAllCollections: this.fetchAllCollections,
                 fetchCollectionById: this.fetchCollectionById,
+                fetchCollectionByTitle: this.fetchCollectionByTitle,
                 closeCart: this.closeCart,
                 openCart: this.openCart,
                 closeMenu: this.closeMenu,

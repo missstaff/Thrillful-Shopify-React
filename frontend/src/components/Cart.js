@@ -31,6 +31,8 @@ const Cart = () => {
         let path = `/collections`;
         history.push(path);
     }
+
+    console.log("cart ", checkout)
     return (
         < >
             <Drawer
@@ -48,7 +50,7 @@ const Cart = () => {
                         <DrawerBody>
                             {
                                 checkout.lineItems?.length ? checkout.lineItems.map(item => (
-                                                  <Grid h="100px" templateRows="repeat(3, 1fr)" templateColumns="repeat(4, 3fr)" gap={4} key={item.id} marginBottom="6" >
+                                    <Grid h="100px" templateRows="repeat(3, 1fr)" templateColumns="repeat(4, 3fr)" gap={4} key={item.id} marginBottom="6" >
                                         <GridItem rowSpan={1}>
                                             <Link style={{ color: "red", fontSize: "13px" }} cursor="pointer" onClick={() => removeLineItem(item.id)}>
                                                 remove
@@ -69,12 +71,14 @@ const Cart = () => {
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1} />
                                         <GridItem rowSpan={1} colSpan={1}>
-                                            size: 
+                                            <Text style={{ fontSize: "13px" }}>
+                                                {item.variant.title}
+                                            </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
-                                        <Button size="xs"marginRight="2" onClick={() => alert(item.quantity - 1)}>-</Button>  
-                                        {(item.quantity) }
-                                        <Button size="xs" marginLeft="2" onClick={() => alert(item.quantity + 1)}>+</Button>
+                                            <Button size="xs" marginRight="2" onClick={() => alert(item.quantity - 1)}>-</Button>
+                                            {(item.quantity)}
+                                            <Button size="xs" marginLeft="2" onClick={() => alert(item.quantity + 1)}>+</Button>
                                         </GridItem>
                                     </Grid>
                                 )) :
