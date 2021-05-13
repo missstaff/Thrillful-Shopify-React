@@ -7,9 +7,9 @@ import { Box, Text, Image } from '@chakra-ui/react';
 /*Banner is currently appliedto all pages via Apps.js but can be applied individually*/
 const Hero = () => {
     return (
-        <Box  w='100%' position='relative' h='auto'>
-            <Image w="100%" src="/../ThrillfulBanner.png" /*banner image path here*/ 
-            h='100%' m='auto' objectFit='contain'
+        <Box  w='100%' position='relative' >
+            <Image w="100%" h='10%' src="/../ThrillfulBanner.png" /*banner image path here*/ 
+             m='auto' objectFit='scale-down'
             objectPosition={['top', 'center']}
             />
         </Box>
