@@ -1,0 +1,26 @@
+.SigninForm{
+    margin: auto;
+  width: 50%;
+  border: 3px solid #ff0000;
+  padding: 10px;
+
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
+#message{
+    font-size: 30px; 
+    width: 100%;
+    height: 250px;
+    }
+
+.contactForm{
+    margin: auto;
+    width: 50%;
+    /* border: 3px solid #000000;  */
+    padding: 10px;
+}

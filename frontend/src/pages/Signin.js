@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {signin} from '../actions/userActions.js';
+import { signin } from '../actions/userActions.js';
+import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
+import '../css/form.css';
 
 export default function SigninScreen() {
   const [email, setEmail] = useState('');
@@ -10,47 +12,67 @@ export default function SigninScreen() {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-  dispatch(signin(email, password));
+    dispatch(signin(email, password));
   };
   return (
-    <div>
-      <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Sign In</h1>
-        </div>
-        <div>
-          <label htmlFor="email">Email address</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label />
-          <button className="primary" type="submit">
+    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" className="SigninForm" marginTop="10px" marginBottom="10px">
+
+      {/* Sign In is Email and PW 
+      Link to forgot pw
+      Link to register if not alreay
+      */}
+
+      <FormControl className="form" onSubmit={submitHandler}>
+        <FormLabel htmlFor="email">Email address</FormLabel>
+        <Input
+          type="email"
+          id="email"
+          placeholder="Enter email"
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        ></Input>
+
+        <br></br>
+
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <Input
+          type="password"
+          id="password"
+          placeholder="Enter password"
+          required
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
+
+        {/* Need to have it link to a generate new PW page or popup */}
+
+        <Text>
+          Forgot Password
+        </Text>
+
+        <br></br>
+
+        <Center>
+          <Button
+            mt={4}
+            colorScheme="red"
+            type="submit"
+          >
             Sign In
-          </button>
-        </div>
-        <div>
-          <label />
-          <div>
-            New customer? <Link to="/register">Create your account</Link>
-          </div>
-        </div>
-      </form>
-    </div>
+          </Button>
+        </Center>
+
+        <Center>
+          <Text>
+            New customer? 
+            <Link to="/Register" style={{color: "#ff0000" }}> Create your account</Link>
+          </Text>
+
+        </Center>
+
+      </FormControl>
+
+    </Box>
+
+
   );
 }

@@ -12,6 +12,7 @@ import NavBar from './components/NavBar.js';
 import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
+import Register from './pages/Register.js';
 
 
 function App() {
@@ -29,9 +30,12 @@ function App() {
           <Route path="/adminbanner/">         
             <AdminBanner/>
             </Route>
-            <Route path="/signin/" component={Signin}>         
-            <Signin/>
-            </Route>
+            <Route path="/signin/" component={Signin}>
+            <Signin />
+          </Route>
+          <Route path="/register/">
+            <Register />
+          </Route>
           <Route path="/all-products/">
             <Products />
           </Route>
