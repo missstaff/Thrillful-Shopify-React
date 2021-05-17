@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../context/shopContext'
-import { Box, Grid, Text, Image, Center } from '@chakra-ui/react'
+import { Box, Grid, Text, Image, Center, Heading } from '@chakra-ui/react'
 
 
 const Products = () => {
@@ -15,6 +15,9 @@ const Products = () => {
     if (!products) return <div>Loading...</div>
     return (
         <Box p="2rem">
+            <Center>
+                <Heading>All Products</Heading>
+            </Center>
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                 {
                     products.map(product => (
