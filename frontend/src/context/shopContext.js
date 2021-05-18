@@ -61,7 +61,7 @@ class ShopProvider extends Component {
     }
 
     /*Add an item to cart*/ //quantity selector ?? here??
-    addItemToCheckout = async (variantId, quantity, size) => {
+    addItemToCheckout = async (variantId, quantity) => {
         const lineItemsToAdd = [
             {
                 variantId,
