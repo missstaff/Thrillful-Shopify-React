@@ -17,7 +17,7 @@ productRouter.post('/products',
   );
 
   productRouter.post('/reviews',
-   //posts product Id and name to database
+   //posts reviews
   //link id and name with review here
   );
 
