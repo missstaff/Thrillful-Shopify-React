@@ -31,18 +31,11 @@ const Cart = () => {
         let path = `/collections`;
         history.push(path);
     }
+    // click image to take user back to product
     function backToProduct(productHandle) {
         let productPath = `/product/${productHandle}`
         history.push(productPath);
     }
-    // const backToProduct = () => {
-    //     let prodPath = `product/${product.handle}`;
-    //     history.push(prodPath);
-    // }
-    const cartVariant = checkout.lineItems;
-    console.log("cartVariant: ", cartVariant);
-    //console.log("product handle: ", product.handle)
-    // console.log("cart: ", checkout);
 
     return (
         < >
@@ -65,7 +58,6 @@ const Cart = () => {
                                         <GridItem rowSpan={1}>
                                             <Link style={{ color: "red", fontSize: "13px" }} cursor="pointer" onClick={() => removeLineItem(item.id)}>
                                                 remove
-                                                {console.log("item: ", item)}
                                              </Link>
                                         </GridItem>
                                         <GridItem rowSpan={3} colSpan={1}>

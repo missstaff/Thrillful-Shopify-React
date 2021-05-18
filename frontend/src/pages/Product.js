@@ -24,8 +24,6 @@ const Product = () => {
         fetchProductWithHandle(handle)
     }, [fetchProductWithHandle, handle])
 
-console.log("product: ", product)
-
     if (!product.title) return <div>Loading...</div>
     return (
         <Box p="2rem">
@@ -54,7 +52,6 @@ console.log("product: ", product)
                         <option key={1}value={1}>1</option>
                         <option key={2}value={2}>2</option>
                         <option key={3}value={3}>3</option>
-                        {console.log("QTY: ", Qty)}
                     </Select>
                     <Button marginTop="5"
                         onClick={() => addItemToCheckout(Size, Qty /*need code to be able to select quantity*/)}
