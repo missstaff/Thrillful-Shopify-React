@@ -50,7 +50,7 @@ const Cart = () => {
                         <DrawerBody>
                             {
                                 checkout.lineItems?.length ? checkout.lineItems.map(item => (
-                                    <Grid h="100px" templateRows="repeat(3, 1fr)" templateColumns="repeat(4, 3fr)" gap={4} key={item.id} marginBottom="6" >
+                                    <Grid h="100px" templateRows="repeat(3, 1fr)" templateColumns="repeat(4, 3fr" gap={4} key={item.id} marginBottom="6" >
                                         <GridItem rowSpan={1}>
                                             <Link style={{ color: "red", fontSize: "13px" }} cursor="pointer" onClick={() => removeLineItem(item.id)}>
                                                 remove

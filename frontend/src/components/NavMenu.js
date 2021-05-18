@@ -15,7 +15,8 @@ import {
     Flex,
     Image,
     Box,
-    VStack
+    VStack,
+    Center
 } from "@chakra-ui/react"
 
 import { ShopContext } from '../context/shopContext'
@@ -47,9 +48,11 @@ const NavMenu = () => {
                             <Link to="/Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2NjQ5OTQ1NzE5Mg==" style={{ fontWeight: "bold" }}onClick={closeMenu}>Beauty</Link>
                         </VStack>
                     </DrawerBody>
-                    <DrawerFooter>
-                        <Text textAlign="center">Footer</Text>
+                   <VStack>
+                   <DrawerFooter>
+                    <Link to="/about" textAlign="center" style={{ fontWeight: "bold" }}>About Us</Link>
                     </DrawerFooter>
+                   </VStack>
                 </DrawerContent>
             </DrawerOverlay>
             

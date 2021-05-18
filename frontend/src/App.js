@@ -13,6 +13,7 @@ import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
 import Register from './pages/Register.js';
+import About from './pages/About.js';
 
 
 function App() {
@@ -24,13 +25,16 @@ function App() {
         <NavMenu />
         <Hero />
         <Switch>
+          <Route path="/about/">
+            <About />
+          </Route>
           <Route path="/contact/" component={Contact}>
             <Contact />
           </Route>
-          <Route path="/adminbanner/">         
-            <AdminBanner/>
-            </Route>
-            <Route path="/signin/" component={Signin}>
+          <Route path="/adminbanner/">
+            <AdminBanner />
+          </Route>
+          <Route path="/signin/" component={Signin}>
             <Signin />
           </Route>
           <Route path="/register/">
@@ -41,13 +45,13 @@ function App() {
           </Route>
           <Route path="/Product/:handle/">
             <Product />
-            </Route>
-            <Route path="/Collections/">
-              <Collections />
-            </Route>
-            <Route path="/:collectionId">
-              <Collection />
-            </Route>
+          </Route>
+          <Route path="/Collections/">
+            <Collections />
+          </Route>
+          <Route path="/:collectionId">
+            <Collection />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
