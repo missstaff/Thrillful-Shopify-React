@@ -65,7 +65,7 @@ class ShopProvider extends Component {
         const lineItemsToAdd = [
             {
                 variantId,
-                quantity: parseInt(quantity, 10),
+                quantity: parseInt(quantity),
             }
         ]
         const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)        

@@ -17,6 +17,7 @@ const Product = () => {
 
     const handleQty = (e) => {
         setQty(e.target.value);
+        console.log("event: ", e.target.value)
     }
 
     useEffect(() => {
@@ -40,7 +41,7 @@ console.log("product: ", product)
                     <Rating>
 
                     </Rating>
-                    <Select placeholder="Choose size" marginTop="10" size="sm" w="23%" onChange={handleChange}>
+                    <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange}>
                         {
                             sizes.map(size => (
                                 <option key={size.id} value={size.id}>                     
@@ -49,10 +50,11 @@ console.log("product: ", product)
                             ))
                         }                        
                     </Select>
-                    <Select marginTop="5" size="sm" w="23%" onChange={handleQty}>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
+                    <Select placeholder="Select Qty" marginTop="5" size="sm" w="23%" onChange={handleQty}>
+                        <option key={1}value={1}>1</option>
+                        <option key={2}value={2}>2</option>
+                        <option key={3}value={3}>3</option>
+                        {console.log("QTY: ", Qty)}
                     </Select>
                     <Button marginTop="5"
                         onClick={() => addItemToCheckout(Size, Qty /*need code to be able to select quantity*/)}

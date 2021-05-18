@@ -21,7 +21,7 @@ import {
 
 
 const Cart = () => {
-    const { isCartOpen, isMenuOpen, closeCart, checkout, lineItems, lineItemToUpdate, removeLineItem, updateLineItem } = useContext(ShopContext);
+    const { isCartOpen, isMenuOpen, closeCart, checkout, lineItems, lineItemToUpdate, removeLineItem, updateLineItem, product } = useContext(ShopContext);
     const [count, setCount] = useState(0);
 
 
@@ -31,6 +31,19 @@ const Cart = () => {
         let path = `/collections`;
         history.push(path);
     }
+    function backToProduct(productHandle) {
+        let productPath = `/product/${productHandle}`
+        history.push(productPath);
+    }
+    // const backToProduct = () => {
+    //     let prodPath = `product/${product.handle}`;
+    //     history.push(prodPath);
+    // }
+    const cartVariant = checkout.lineItems;
+    console.log("cartVariant: ", cartVariant);
+    //console.log("product handle: ", product.handle)
+    // console.log("cart: ", checkout);
+
     return (
         < >
             <Drawer
@@ -52,10 +65,13 @@ const Cart = () => {
                                         <GridItem rowSpan={1}>
                                             <Link style={{ color: "red", fontSize: "13px" }} cursor="pointer" onClick={() => removeLineItem(item.id)}>
                                                 remove
+                                                {console.log("item: ", item)}
                                              </Link>
                                         </GridItem>
                                         <GridItem rowSpan={3} colSpan={1}>
+                                            <Link onClick={() => { backToProduct(item.variant.product.handle); closeCart(); }}>
                                             <Image src={item.variant.image.src} />
+                                            </Link>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
                                             <Text style={{ fontSize: "13px", fontWeight: "bold" }}>
@@ -75,7 +91,8 @@ const Cart = () => {
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
-                                            <Button size="xs" marginRight="2" onClick={() => alert(item.quantity - 1)}>-</Button>
+                                            {/* Quantity */}
+                                            <Button size="xs" marginRight="2" onClick={() => item.quantity - 1}>-</Button>
                                             {(item.quantity)}
                                             <Button size="xs" marginLeft="2" onClick={() => alert(item.quantity + 1)}>+</Button>
                                         </GridItem>
