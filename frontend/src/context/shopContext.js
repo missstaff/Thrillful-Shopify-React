@@ -66,14 +66,9 @@ class ShopProvider extends Component {
             {
                 variantId,
                 quantity: parseInt(quantity, 10),
-                // size: [{key: variantId, value: size }]
-                // size
             }
         ]
-
-        console.log("size in context: ",size);
         const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)        
-        console.log("checkout in context ", checkout)
         this.setState({ checkout: checkout })
         this.openCart()
     }

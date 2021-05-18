@@ -12,19 +12,11 @@ const Product = () => {
 
     const handleChange = (e) => {
         setSize(e.target.value);
-        console.log("event:", e.target.value)
     }
-    // console.log("TEST", e) 
-    const productVariants = product.variants;
-    console.log("product variants: ", productVariants[0].id)
 
     useEffect(() => {
         fetchProductWithHandle(handle)
     }, [fetchProductWithHandle, handle])
-
-    // tests
-    console.log("product:", product)
-    // console.log("sizes ", sizes)
 
     if (!product.title) return <div>Loading...</div>
     return (
@@ -44,9 +36,7 @@ const Product = () => {
                     <Select placeholder="Choose size" marginTop="10" size="sm" w="25%" onChange={handleChange}>
                         {
                             sizes.map(size => (
-                                <option value={size.title} Size={size.title} key={productVariants.id}>
-                                    {console.log("Size", Size)}  
-                                    {console.log("key: ", productVariants.id)}                                
+                                <option key={size.id} value={size.id}>                     
                                     {size.title}
                                 </option>
 
@@ -55,7 +45,7 @@ const Product = () => {
                         
                     </Select>
                     <Button marginTop="10"
-                        onClick={() => addItemToCheckout(product.variants[0].id, 1, Size /*need code to be able to select quantity*/)}
+                        onClick={() => addItemToCheckout(Size, 1/*need code to be able to select quantity*/)}
                         _hover={{ opacity: '70%' }}
                         w="10rem" backgroundColor="#ff0000" _focus="none"
                     >Add to cart</Button>

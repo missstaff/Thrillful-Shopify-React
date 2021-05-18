@@ -31,9 +31,6 @@ const Cart = () => {
         let path = `/collections`;
         history.push(path);
     }
-
-    console.log("cart ", checkout)
-
     return (
         < >
             <Drawer
