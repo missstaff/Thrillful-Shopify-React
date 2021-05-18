@@ -11,8 +11,14 @@ const productRouter = express.Router();
 //    //not sure we need a seed
 // );
 
-productRouter.post('/reviews',
+productRouter.post('/products',
    //posts product Id and name to database
+   //derive id and name from shop context?
+  );
+
+  productRouter.post('/reviews',
+   //posts product Id and name to database
+  //link id and name with review here
   );
 
 productRouter.get(
