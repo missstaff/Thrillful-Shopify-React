@@ -8,22 +8,15 @@ const Product = () => {
 
     const { handle } = useParams();
     const { fetchProductWithHandle, addItemToCheckout, product, sizes } = useContext(ShopContext)
-    const [ Size, setSize ] = useState(' ');
+    const [Size, setSize] = useState(' ');
 
     const handleChange = (e) => {
         setSize(e.target.value);
-        console.log("event:", e.target.value)
-    }        
-    // console.log("TEST", e) 
-    
-    
+    }
+
     useEffect(() => {
         fetchProductWithHandle(handle)
     }, [fetchProductWithHandle, handle])
-
-    // tests
-    console.log("product:", product)
-    console.log("sizes ", sizes)
 
     if (!product.title) return <div>Loading...</div>
     return (
@@ -40,17 +33,19 @@ const Product = () => {
                     <Rating>
 
                     </Rating>
-                    <Select placeholder="Size" marginTop="10" size="sm" w="25%" onChange={handleChange}>
+                    <Select placeholder="Choose size" marginTop="10" size="sm" w="25%" onChange={handleChange}>
                         {
                             sizes.map(size => (
-                                <option value={Size}>
+                                <option key={size.id} value={size.id}>                     
                                     {size.title}
                                 </option>
+
                             ))
                         }
+                        
                     </Select>
                     <Button marginTop="10"
-                        onClick={() => addItemToCheckout(product.variants[0].id, 1, handleChange.value /*need code to be able to select quantity*/)}
+                        onClick={() => addItemToCheckout(Size, 1/*need code to be able to select quantity*/)}
                         _hover={{ opacity: '70%' }}
                         w="10rem" backgroundColor="#ff0000" _focus="none"
                     >Add to cart</Button>

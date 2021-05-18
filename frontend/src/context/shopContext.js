@@ -27,6 +27,7 @@ class ShopProvider extends Component {
         lineItemToUpdate: [{id: "", qty: 0}],
         quantity: 0,
         sizes: [],
+        size: "",
         /*for cart slide out functionality*/
         isCartOpen: false,
          /*for menu slide out functionality*/
@@ -60,15 +61,14 @@ class ShopProvider extends Component {
     }
 
     /*Add an item to cart*/ //quantity selector ?? here??
-    addItemToCheckout = async (variantId, quantity, sizes) => {
+    addItemToCheckout = async (variantId, quantity) => {
         const lineItemsToAdd = [
             {
                 variantId,
                 quantity: parseInt(quantity, 10),
-                sizes
             }
         ]
-        const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)
+        const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)        
         this.setState({ checkout: checkout })
         this.openCart()
     }

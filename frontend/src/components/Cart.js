@@ -31,8 +31,6 @@ const Cart = () => {
         let path = `/collections`;
         history.push(path);
     }
-
-    console.log("cart ", checkout)
     return (
         < >
             <Drawer
@@ -71,6 +69,7 @@ const Cart = () => {
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1} />
                                         <GridItem rowSpan={1} colSpan={1}>
+                                            {/* size */}
                                             <Text style={{ fontSize: "13px" }}>
                                                 {item.variant.title}
                                             </Text>
