@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 //import data from './data.js';
 import userRouter from './routers/userRouter.js';
+import contactRouter from './routers/contactRouter';
 
 const port = process.env.PORT || 5000;
 
@@ -23,6 +24,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 // });
 
 app.use('/api/users', userRouter);
+app.use('/api/contact', contactRouter);
 
 app.get('/', (req, res) => {
   res.send('Server is ready');
