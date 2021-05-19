@@ -21,8 +21,14 @@ import {
 
 
 const Cart = () => {
-    const { isCartOpen, isMenuOpen, closeCart, checkout, lineItems, lineItemToUpdate, removeLineItem, updateLineItem, product } = useContext(ShopContext);
-    const [count, setCount] = useState(0);
+    const { isCartOpen, isMenuOpen, closeCart, checkout, removeLineItem, updateLineItemQty } = useContext(ShopContext);
+    const [Qty, setQty] = useState(' ')
+
+    const handleQty = (e) => {
+        setQty(e.target.value);
+        console.log("event: ", e.target.value)
+    }
+
 
 
     // continue shopping 
@@ -36,7 +42,7 @@ const Cart = () => {
         let productPath = `/product/${productHandle}`
         history.push(productPath);
     }
-
+console.log("checkout cart id: ", checkout.id)
     return (
         < >
             <Drawer
@@ -80,13 +86,18 @@ const Cart = () => {
                                             {/* size */}
                                             <Text style={{ fontSize: "13px" }}>
                                                 {item.variant.title}
+                                                {console.log("item id: ", item.id)}
+                                                {/* {console.log("item: ", item)}
+                                                {console.log("item quantity +1: ", item.quantity + 1)}
+                                                {console.log("item quantity -1: ", item.quantity -1)} */}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
                                             {/* Quantity */}
-                                            <Button size="xs" marginRight="2" onClick={() => item.quantity - 1}>-</Button>
-                                            {(item.quantity)}
-                                            <Button size="xs" marginLeft="2" onClick={() => alert(item.quantity + 1)}>+</Button>
+                                            <Button size="xs" marginRight="2" key={-1} value={item.quantity - 1} onClick={handleQty}>-</Button>
+                                            {item.quantity}
+                                            {console.log("Qty: ", Qty)}
+                                            <Button size="xs" marginLeft="2" key={1} value={item.quantity + 1} onClick={handleQty}>+</Button>
                                         </GridItem>
                                     </Grid>
                                 )) :
