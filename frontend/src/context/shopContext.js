@@ -6,7 +6,7 @@ const ShopContext = React.createContext();
 /*Builds the client gets api credentials from .env file */
 const client = Client.buildClient({
     storefrontAccessToken: '955c6f5a46ee1f803914123685d31acf',
-  	domain: 'thrillfuldevelopment.myshopify.com'
+  	domain: 'thrillfuldevelopment.myshopify.com'    
   });
 
 

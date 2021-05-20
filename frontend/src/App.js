@@ -11,7 +11,9 @@ import Cart from './components/Cart.js';
 import NavBar from './components/NavBar.js';
 import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
-import Hero from './components/Hero.js';
+// import Hero from './components/Hero.js';
+import Register from './pages/Register.js';
+import Banner from './pages/Banner.js';
 
 
 function App() {
@@ -21,10 +23,14 @@ function App() {
         <NavBar />
         <Cart />
         <NavMenu />
-        <Hero />
+        <Banner/>
+        {/* <Hero /> */}
         <Switch>
           <Route path="/contact/" component={Contact}>
             <Contact />
+          </Route>
+          <Route path="/register/" component={Register}>
+            <Register />
           </Route>
           <Route path="/adminbanner/">         
             <AdminBanner/>

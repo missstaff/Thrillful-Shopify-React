@@ -4,6 +4,9 @@ import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
   USER_SIGNOUT,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from '../constants/userConstants';
 
 export const signin = (email, password) => async (dispatch) => {
@@ -27,3 +30,23 @@ export const signout = () => (dispatch) => {
   localStorage.removeItem('cartItems');
   dispatch({ type: USER_SIGNOUT });
 };
+
+
+export const register = (first_name,last_name,username,email, password) => async (dispatch) => {
+  dispatch({ type: USER_REGISTER_REQUEST, payload: { first_name,last_name,username,email, password } });
+  try {
+    const { data } = await Axios.post('/api/users/register', {first_name,last_name, username,email, password });
+    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+    dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });//THIS IS FOR AUTHENTICATION , SINCE WE HAVE IT IN THE APP.JS OR HE DOES REMOVE IT DOESNT WORK.
+    localStorage.setItem('userInfo', JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: USER_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
