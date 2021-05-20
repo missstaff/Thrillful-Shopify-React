@@ -66,6 +66,12 @@ const Contact = () => {
 
               </FormControl>
 
+              <FormControl id="subject" isRequired maxlength="1000">
+                  <FormLabel> Subject </FormLabel>
+                  <Input onChange={handleChange} name='subject' placeholder="Subject" />
+
+              </FormControl>
+
               <FormControl id="message" isRequired maxlength="1000">
                   <FormLabel> Message </FormLabel>
                   <Input onChange={handleChange} name='message' placeholder="Message for Thrillful" />

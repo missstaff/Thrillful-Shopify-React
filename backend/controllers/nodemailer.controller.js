@@ -1,21 +1,21 @@
 // "use strict";
-import * as nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+// import * as nodemailer from 'nodemailer';
+// import dotenv from 'dotenv';
 
-//const nodemailer = require('nodemailer');
-
-
+const nodemailer = require('nodemailer');
 
 
-module.exports = {
+
+
+module.exports = { 
   SendMessage: (req, res) => {
     async function main(customer) {
       const transporter = nodemailer.createTransport({
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-            user: 'shaun.heller97@ethereal.email',
-            pass: 'J5af28jazjQKxmeNKY'
+            user: process.env.EMAIL,
+            pass: process.env.EMAILPW
         }
     });
   
@@ -37,4 +37,3 @@ module.exports = {
   },
 };
 
-//export default contactRouter;
