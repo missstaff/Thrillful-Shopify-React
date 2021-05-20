@@ -22,7 +22,7 @@ export default function Register() {
 
   return (
     <Box className="Login">
-      <Form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="form">
 
       <FormControl size="lg" controlId="firstname">
           <FormLabel>First Name</FormLabel>
@@ -70,7 +70,7 @@ export default function Register() {
         <NavLink disabled={false}  to="/">Register here</NavLink> */}
       
         <p> Already have an account? <NavLink to="/Register">Login</NavLink></p>
-      </Form>
+      </form>
     </Box>
   );
 }

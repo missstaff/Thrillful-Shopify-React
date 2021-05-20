@@ -1,17 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 //import data from './data.js';
 import userRouter from './routers/userRouter.js';
-import contactRouter from './routers/contactRouter';
-
+import contactRouter from './routers/contact.router.js';
 const port = process.env.PORT || 5000;
 
 dotenv.config();
 const app = express();
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
-
+app.use(cors({ credentials: true, origin: 'http://localhost:3000'}));
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,

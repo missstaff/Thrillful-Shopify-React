@@ -11,6 +11,10 @@ const Contact = () => {
         message: ''
     });
 
+
+//Gets current customer which is an empty string. 
+//e.target.name is on every input field to match the state varaible 
+//e.target.value is the input the customer puts in
     const handleChange = (e) => {
         setCustomer({
           ...customer,
@@ -23,6 +27,8 @@ const Contact = () => {
     // console.log('OUTSIDE HANDLE CHANGE');
     // console.log(customer.fullName);
 
+
+    //prevent default prevents html from refreshing 
     const handleSubmit= (e) => {
         e.preventDefault();
         console.log(customer);
@@ -42,6 +48,7 @@ const Contact = () => {
     }
 
 
+//Handel submit in form tag and submit on type for the buttonIf not in the form element it can be placed in the button element
     return (
         <Box maxW="lg" borderWidth="5px" borderRadius="lg" overflow="hidden" className="contactForm" marginTop="10px" marginBottom="10px">
             <Center fontSize="25px">
