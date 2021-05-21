@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import Client from 'shopify-buy';
 
-
 const ShopContext = React.createContext();
 /*Builds the client gets api credentials from .env file */
 const client = Client.buildClient({
@@ -10,23 +9,18 @@ const client = Client.buildClient({
     domain: 'thrillfuldevelopment.myshopify.com'
 });
 
-
 class ShopProvider extends Component {
 
     /*propert initial state*/
     state = {
         product: {},
         products: [],
-        // productVariants: [],
         checkout: {},
         collections: [],
         collection: [],
         collectionName: "",
-        collectionTitle: [],
         lineItems: [],
-        quantity: 0,
         sizes: [],
-        size: "",
         /*for cart slide out functionality*/
         isCartOpen: false,
         /*for menu slide out functionality*/
@@ -78,35 +72,19 @@ class ShopProvider extends Component {
         this.setState({ checkout: checkout })
     }
 
-    /* Update Line Item Quantity
-    (checkoutId, Line item to update) */
-    updateLineItemQty = async (lineItemId, quantity) => {
-        //Update the line item on the checkout (change the quantity or variant)
-        const lineItemQty = [
+    /*Update the quantity of an item in the cart*/
+    updateLineItemQty = async(lineItemId, quantity) => {
+        const checkoutId = this.state.checkout.id
+        const lineItemsToUpdate = [
             {
-                lineItemId,
-                quantity: parseInt(quantity),
+                id: lineItemId,
+                quantity: quantity
             }
         ]
-        client.checkout.updateLineItems(this.state.checkout.id, lineItemQty).then((checkout) => {
-            // const lineItems = checkout.lineItems;
-            this.setState({ checkout: checkout })
-            // array of items in cart
-            // this.setState({ lineItems: lineItems })
-            // this.setState({ lineItemToUpdate: [{ id: lineItems.id, qty: lineItems.quantity }] })
+        client.checkout.updateLineItems(checkoutId, lineItemsToUpdate).then((checkout) =>{
+            this.setState ({ checkout: checkout })
         })
     }
-    // updateLineItemQty = async (lineItemId, quantity) => {
-    //     const lineItemQty =[
-    //         {
-    //             lineItemId,
-    //             quantity: parseInt(quantity),
-    //         }
-    //     ]
-    //     const checkout = await client.checkout.updateLineItems(this.state.checkout.id, lineItemQty)
-    //     console.log("checkout in context: ", checkout)
-    //     this.setState({ checkout: checkout})
-    // }
 
     /*Gets all products*/
     fetchAllProducts = async () => {
@@ -151,8 +129,6 @@ class ShopProvider extends Component {
     openMenu = async () => { this.setState({ isMenuOpen: true }) }
 
     render() {
-        /*console.log(this.state.checkout)*/ //TEST TRASH SHOWS CHECKOUT PAYLOAD//
-
         return (
             <ShopContext.Provider value={{
                 ...this.state,
@@ -167,7 +143,6 @@ class ShopProvider extends Component {
                 openCart: this.openCart,
                 closeMenu: this.closeMenu,
                 openMenu: this.openMenu
-
             }}>
                 {this.props.children}
             </ShopContext.Provider>

@@ -17,12 +17,12 @@ const Product = () => {
 
     const handleQty = (e) => {
         setQty(e.target.value);
-        console.log("event: ", e.target.value)
     }
 
     useEffect(() => {
         fetchProductWithHandle(handle)
     }, [fetchProductWithHandle, handle])
+
 
     if (!product.title) return <div>Loading...</div>
     return (
@@ -39,6 +39,8 @@ const Product = () => {
                     <Rating>
 
                     </Rating>
+
+                    {/* NEED ERROR HANDLING */}
                     <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange}>
                         {
                             sizes.map(size => (
@@ -48,8 +50,9 @@ const Product = () => {
                             ))
                         }                        
                     </Select>
-                    <Select placeholder="Select Qty" marginTop="5" size="sm" w="23%" onChange={handleQty}>
-                        <option key={1}value={1}>1</option>
+                    {/* NEED ERROR HANDLING */}
+                    <Select marginTop="5" size="sm" w="23%" onChange={handleQty}>
+                        <option key={1}value={1} defaultValue>1</option>
                         <option key={2}value={2}>2</option>
                         <option key={3}value={3}>3</option>
                     </Select>

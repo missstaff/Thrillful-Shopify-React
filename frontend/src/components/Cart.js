@@ -22,14 +22,6 @@ import {
 
 const Cart = () => {
     const { isCartOpen, isMenuOpen, closeCart, checkout, removeLineItem, updateLineItemQty } = useContext(ShopContext);
-    const [Qty, setQty] = useState(' ')
-
-    const handleQty = (e) => {
-        setQty(e.target.value);
-        console.log("event: ", e.target.value)
-    }
-
-
 
     // continue shopping 
     const history = useHistory();
@@ -42,7 +34,6 @@ const Cart = () => {
         let productPath = `/product/${productHandle}`
         history.push(productPath);
     }
-console.log("checkout cart id: ", checkout.id)
     return (
         < >
             <Drawer
@@ -68,36 +59,33 @@ console.log("checkout cart id: ", checkout.id)
                                         </GridItem>
                                         <GridItem rowSpan={3} colSpan={1}>
                                             <Link onClick={() => { backToProduct(item.variant.product.handle); closeCart(); }}>
-                                            <Image src={item.variant.image.src} />
+                                                <Image src={item.variant.image.src} />
                                             </Link>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
+                                            {/* Prioduct Title */}
                                             <Text style={{ fontSize: "13px", fontWeight: "bold" }}>
                                                 {item.title}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
+                                            {/* Product Price */}
                                             <Text>
                                                 ${item.variant.price}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1} />
                                         <GridItem rowSpan={1} colSpan={1}>
-                                            {/* size */}
+                                            {/* Product Size */}
                                             <Text style={{ fontSize: "13px" }}>
                                                 {item.variant.title}
-                                                {console.log("item id: ", item.id)}
-                                                {/* {console.log("item: ", item)}
-                                                {console.log("item quantity +1: ", item.quantity + 1)}
-                                                {console.log("item quantity -1: ", item.quantity -1)} */}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
-                                            {/* Quantity */}
-                                            <Button size="xs" marginRight="2" key={-1} value={item.quantity - 1} onClick={handleQty}>-</Button>
+                                            {/* Quantity */}     
+                                            <Button size="xs" marginRight="2" key={-1} value={item.quantity - 1} onClick={() => updateLineItemQty(item.id, item.quantity - 1)}>-</Button>                                            
                                             {item.quantity}
-                                            {console.log("Qty: ", Qty)}
-                                            <Button size="xs" marginLeft="2" key={1} value={item.quantity + 1} onClick={handleQty}>+</Button>
+                                            <Button size="xs" marginLeft="2" key={1} value={item.quantity + 1} onClick={() => updateLineItemQty(item.id, item.quantity + 1)}>+</Button>
                                         </GridItem>
                                     </Grid>
                                 )) :
