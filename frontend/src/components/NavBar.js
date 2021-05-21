@@ -1,35 +1,36 @@
-import React, { useContext } from 'react'
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { signout } from '../actions/userActions.js';
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../context/shopContext'
 import { Flex, Text, Icon, Box, Badge } from '@chakra-ui/react'
 import { MdMenu, MdShoppingCart, MdAccountCircle } from 'react-icons/md'
-import { signout } from '../actions/userActions';
+import { useContext } from 'react';
+
 
 const NavBar = () => {
 
     const { openCart, openMenu, checkout } = useContext(ShopContext)
-      //to change state of login on navbar//
-//   const userSignin = useSelector((state) => state.userSignin);
-//   const { userInfo } = userSignin;
-//   const dispatch = useDispatch();
-//   const signoutHandler = () => {
-//     dispatch(signout());
-//   };
 
+    //to change state of login on navbar//
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+    const dispatch = useDispatch();
+    const signoutHandler = () => {
+        dispatch(signout());
+    };
 
     return (
+
         <Flex backgroundColor="#000000" flexDirection="row" alignItems="center" justifyContent="space-between" /*navbar element spacing*/ padding="2rem">
             <Icon fill="white" cursor="pointer" as={MdMenu} w={30} h={30}
-                onClick={() => openMenu()} 
+                onClick={() => openMenu()}
             ></Icon>
             <Link to="/">
-                <Text color="white" fontSize={44} _hover={{ color: '#ff0000'}}>Thrillful</Text>
+                <Text textAlign="center" color="white" fontSize={44} _hover={{ color: '#ff0000' }}>Thrillful</Text>
             </Link>
-            <Box>
-            <Link to="/signin">
-                <Icon fill="white" cursor="pointer" as={MdAccountCircle} w={50} h={50} pr={5}
-                /></Link>
+            <div>
+                  <Box>
                 <Icon fill="white" cursor="pointer" as={MdShoppingCart} w={30} h={30}
                     onClick={() => openCart()}
                 />
@@ -37,6 +38,25 @@ const NavBar = () => {
                     {checkout.lineItems?.length}
                 </Badge>
             </Box>
+                {userInfo ? (
+
+                    <Link to="#signout" onClick={signoutHandler}>
+                        <Text color="#ffffff">
+                            Sign Out
+                      </Text>
+                    </Link>
+
+                ) : (
+                    <Link to="/signin">
+                        <Text color="#ffffff">
+                            Sign In
+                  </Text>
+                    </Link>
+                )}
+               
+            </div>
+           
+
 
         </Flex>
     )
