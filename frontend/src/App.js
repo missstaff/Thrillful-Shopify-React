@@ -7,12 +7,12 @@ import Collection from './pages/Collection.js';
 import Contact from './pages/Contact.js';
 import AdminBanner from './pages/AdminBanner.js';
 import Signin from './pages/Signin.js';
+import Register from './pages/Register';
 import Cart from './components/Cart.js';
 import NavBar from './components/NavBar.js';
 import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
-import Register from './pages/Register.js';
 import About from './pages/About.js';
 
 
