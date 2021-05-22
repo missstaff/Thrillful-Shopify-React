@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { Box, Center, Grid, Heading, Image, Text, CenterImage, VStack } from '@chakra-ui/react'
+import { Box, Center, Grid, Image, Text, VStack } from '@chakra-ui/react';
 import { ShopContext } from '../context/shopContext';
-import { Link } from 'react-router-dom'
-import ImageWithText from '../components/ImageWithText.js';
-//import RichText from '../components/RichText.js';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -20,8 +18,6 @@ const Home = () => {
 
         return (
             <Box>
-                 <Image w="100%" h="auto" src="../backgroundImage.png" />
-                
                 <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                     {
                         collections.map(collection => (

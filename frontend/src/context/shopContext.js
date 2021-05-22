@@ -97,8 +97,11 @@ class ShopProvider extends Component {
         const products = await client.product.fetchAll()
         //updates the state//
         this.setState({ products: products })
+        products.forEach(product => {
+            console.log("PRODUCT NAME: " + product.title + " Id: " + product.id )
+           });
     }
-
+    
     /*using handle to fetch a product by name so the product name is in the browser link not a number~bette for SEO and branding*/
     // add product.variants in order to get sizes
     fetchProductWithHandle = async (handle) => {
