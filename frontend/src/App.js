@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home.js';
 import Products from './pages/Products.js';
@@ -13,12 +14,21 @@ import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
 import Register from './pages/Register.js';
+import MessageBox from './components/MessageBox';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
+  const message = useSelector((state) => state.message);
+
+  console.log(message);
+
   return (
     <div className="App">
-      <Router>
+      {/* {message.isActive && (
+        <MessageBox />
+        )} */}
+        <Router>
         <NavBar />
         <Cart />
         <NavMenu />

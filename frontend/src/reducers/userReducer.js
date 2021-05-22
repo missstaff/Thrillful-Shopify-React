@@ -4,7 +4,27 @@ import {
     USER_SIGNIN_SUCCESS,
     USER_SIGNOUT,
   } from '../constants/userConstants';
+
+  // const initialState = {
+  //   userInfo: null,
+  // }
   
+  // export const userSigninReducer = (state = initialState, action) => {
+
+    // switch (action.type) {
+    //   case USER_SIGNIN_REQUEST:
+    //     return { user: null };
+    //   case USER_SIGNIN_SUCCESS:
+    //     return { userInfo: action.payload };
+    //   case USER_SIGNIN_FAIL:
+    //     return { userInfo: null };
+    //   case USER_SIGNOUT:
+    //     return { userInfo: null };
+    //   default:
+    //     return state;
+    // }
+// };
+
   export const userSigninReducer = (state = {}, action) => {
     switch (action.type) {
       case USER_SIGNIN_REQUEST:

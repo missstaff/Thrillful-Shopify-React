@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
 import '../css/form.css';
+import { success } from '../actions/messageActions';
+import { useDispatch } from 'react-redux';
 
 const Contact = () => {
-
+    const dispatch = useDispatch();
     const [customer, setCustomer] = useState({
         fullName: '',
         email: '',
-        message: ''
+        message: '',
+        subject: '',
     });
 
 
@@ -32,19 +35,22 @@ const Contact = () => {
     const handleSubmit= (e) => {
         e.preventDefault();
         console.log(customer);
-        axios.post('http://localhost:5000/api/contact', customer)
-        // axios({
-        //     method: "POST",
-        //     url: "http://localhost:3002/send",
-        //     data: this.state
-        // }).then((response) => {
-        //     if (response.data.status === 'success') {
-        //         alert("Message Sent.");
-        //         this.resetForm()
-        //     } else if (response.data.status === 'fail') {
-        //         alert("Message failed to send.")
-        //     }
-        // })
+        axios.post('http://localhost:5000/api/contact', customer);
+        setCustomer({
+            fullName: '',
+            email: '',
+            message: ''
+        });
+        dispatch(success({
+            content: 'Thank you for your submission!',
+            variant: 'success',
+            isActive: true,
+        }));
+        // setTimeout(() => {
+        //     dispatch(reset())
+        // }, 3000);
+        // }
+    
     }
 
 
@@ -57,24 +63,24 @@ const Contact = () => {
               <form onSubmit={handleSubmit}>
               <FormControl id="fullName" className="contactForm" isRequired>
                   <FormLabel>Full Name</FormLabel>
-                  <Input onChange={handleChange} name='fullName' placeholder="First name" />
+                  <Input onChange={handleChange} name='fullName' value={customer.fullName} placeholder="First name" />
               </FormControl>
 
               <FormControl id="email" className="contactForm" isRequired>
                   <FormLabel>Email address</FormLabel>
-                  <Input onChange={handleChange} name='email' type="email" />
+                  <Input onChange={handleChange} name='email' value={customer.email} type="email" />
 
               </FormControl>
 
               <FormControl id="subject" isRequired maxlength="1000">
                   <FormLabel> Subject </FormLabel>
-                  <Input onChange={handleChange} name='subject' placeholder="Subject" />
+                  <Input onChange={handleChange} name='subject' value={customer.subject} placeholder="Subject" />
 
               </FormControl>
 
               <FormControl id="message" isRequired maxlength="1000">
                   <FormLabel> Message </FormLabel>
-                  <Input onChange={handleChange} name='message' placeholder="Message for Thrillful" />
+                  <Input onChange={handleChange} name='message' value={customer.message} placeholder="Message for Thrillful" />
 
               </FormControl>
               <Center>

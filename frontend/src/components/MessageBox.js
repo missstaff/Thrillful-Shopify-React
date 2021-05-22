@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function MessageBox(props) {
+export default function MessageBox({ content, variant }) {
   return (
-    <div className={`alert alert-${props.variant || 'info'}`}>
-      {props.children}
+    <div className={`alert alert-${variant || 'info'}`}>
+      {content}
+      HEY, I'm THE MESSAGE BOX
     </div>
   );
 }

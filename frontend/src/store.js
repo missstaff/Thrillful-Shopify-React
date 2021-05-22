@@ -1,11 +1,13 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { userSigninReducer } from './reducers/userReducer.js';
+import { messageReducer } from './reducers/messageReducer.js';
 
 
 const initialState = {};
 const reducer = (state, action) => {
-    return { userSignin : userSigninReducer };
+    return { userSignin : userSigninReducer,
+            message: messageReducer };
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
