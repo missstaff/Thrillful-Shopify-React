@@ -41,7 +41,7 @@ const Product = () => {
                     </Rating>
 
                     {/* NEED ERROR HANDLING */}
-                    <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange}>
+                    <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange} required>
                         {
                             sizes.map(size => (
                                 <option key={size.id} value={size.id}>                     
@@ -51,7 +51,7 @@ const Product = () => {
                         }                        
                     </Select>
                     {/* NEED ERROR HANDLING */}
-                    <Select marginTop="5" size="sm" w="23%" onChange={handleQty}>
+                    <Select marginTop="5" size="sm" w="23%" onChange={handleQty} required>
                         <option key={1}value={1} defaultValue>1</option>
                         <option key={2}value={2}>2</option>
                         <option key={3}value={3}>3</option>
