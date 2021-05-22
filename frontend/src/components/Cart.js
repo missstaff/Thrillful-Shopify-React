@@ -21,15 +21,18 @@ import {
 
 
 const Cart = () => {
-    const { isCartOpen, isMenuOpen, closeCart, checkout, lineItems, lineItemToUpdate, removeLineItem, updateLineItem } = useContext(ShopContext);
-    const [count, setCount] = useState(0);
-
+    const { isCartOpen, isMenuOpen, closeCart, checkout, removeLineItem, updateLineItemQty } = useContext(ShopContext);
 
     // continue shopping 
     const history = useHistory();
     const continueShoppingRoute = () => {
         let path = `/collections`;
         history.push(path);
+    }
+    // click image to take user back to product
+    function backToProduct(productHandle) {
+        let productPath = `/product/${productHandle}`
+        history.push(productPath);
     }
     return (
         < >
@@ -55,29 +58,34 @@ const Cart = () => {
                                              </Link>
                                         </GridItem>
                                         <GridItem rowSpan={3} colSpan={1}>
-                                            <Image src={item.variant.image.src} />
+                                            <Link onClick={() => { backToProduct(item.variant.product.handle); closeCart(); }}>
+                                                <Image src={item.variant.image.src} />
+                                            </Link>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
+                                            {/* Prioduct Title */}
                                             <Text style={{ fontSize: "13px", fontWeight: "bold" }}>
                                                 {item.title}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
+                                            {/* Product Price */}
                                             <Text>
                                                 ${item.variant.price}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1} />
                                         <GridItem rowSpan={1} colSpan={1}>
-                                            {/* size */}
+                                            {/* Product Size */}
                                             <Text style={{ fontSize: "13px" }}>
                                                 {item.variant.title}
                                             </Text>
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
-                                            <Button size="xs" marginRight="2" onClick={() => alert(item.quantity - 1)}>-</Button>
-                                            {(item.quantity)}
-                                            <Button size="xs" marginLeft="2" onClick={() => alert(item.quantity + 1)}>+</Button>
+                                            {/* Quantity */}     
+                                            <Button size="xs" marginRight="2" key={-1} value={item.quantity - 1} onClick={() => updateLineItemQty(item.id, item.quantity - 1)}>-</Button>                                            
+                                            {item.quantity}
+                                            <Button size="xs" marginLeft="2" key={1} value={item.quantity + 1} onClick={() => updateLineItemQty(item.id, item.quantity + 1)}>+</Button>
                                         </GridItem>
                                     </Grid>
                                 )) :

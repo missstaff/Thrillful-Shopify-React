@@ -9,14 +9,20 @@ const Product = () => {
     const { handle } = useParams();
     const { fetchProductWithHandle, addItemToCheckout, product, sizes } = useContext(ShopContext)
     const [Size, setSize] = useState(' ');
+    const [Qty, setQty] = useState(' ');
 
     const handleChange = (e) => {
         setSize(e.target.value);
     }
 
+    const handleQty = (e) => {
+        setQty(e.target.value);
+    }
+
     useEffect(() => {
         fetchProductWithHandle(handle)
     }, [fetchProductWithHandle, handle])
+
 
     if (!product.title) return <div>Loading...</div>
     return (
@@ -33,19 +39,25 @@ const Product = () => {
                     <Rating>
 
                     </Rating>
-                    <Select placeholder="Choose size" marginTop="10" size="sm" w="25%" onChange={handleChange}>
+
+                    {/* NEED ERROR HANDLING */}
+                    <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange} required>
                         {
                             sizes.map(size => (
                                 <option key={size.id} value={size.id}>                     
                                     {size.title}
                                 </option>
-
                             ))
-                        }
-                        
+                        }                        
                     </Select>
-                    <Button marginTop="10"
-                        onClick={() => addItemToCheckout(Size, 1/*need code to be able to select quantity*/)}
+                    {/* NEED ERROR HANDLING */}
+                    <Select marginTop="5" size="sm" w="23%" onChange={handleQty} required>
+                        <option key={1}value={1} defaultValue>1</option>
+                        <option key={2}value={2}>2</option>
+                        <option key={3}value={3}>3</option>
+                    </Select>
+                    <Button marginTop="5"
+                        onClick={() => addItemToCheckout(Size, Qty /*need code to be able to select quantity*/)}
                         _hover={{ opacity: '70%' }}
                         w="10rem" backgroundColor="#ff0000" _focus="none"
                     >Add to cart</Button>
