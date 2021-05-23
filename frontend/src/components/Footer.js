@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { SocialIcon } from 'react-social-icons';
 import { Grid, Box, Text, VStack, HStack } from '@chakra-ui/react'
 
 const Footer = () => {
@@ -12,9 +13,9 @@ const Footer = () => {
                         <Text _hover={{ color: '#ff0000' }}><Link to='/contact'>Contact Us</Link></Text>
                     </HStack>
                     <HStack >
-                        <Link>Social</Link>
-                        <Link>Social</Link>
-                        <Link>Social</Link>
+                    <SocialIcon url="https://facebook.com" />
+                    <SocialIcon url="https://instagram.com" />
+                    <SocialIcon url="https://twitter.com" />
                     </HStack>
                 </VStack>
 

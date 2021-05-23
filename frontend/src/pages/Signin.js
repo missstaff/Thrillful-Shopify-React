@@ -5,7 +5,7 @@ import { signin } from '../actions/userActions.js';
 import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
 import MessageBox from '../components/MessageBox.js';
 import LoadingBox from '../components/LoadingBox.js';
-
+import '../css/form.css';
 
 
 export const Signin = () => {
@@ -54,8 +54,10 @@ export const Signin = () => {
 
 
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" className="SigninForm" marginTop="10px" marginBottom="10px">
-
+    <Box maxW="lg" borderRadius="lg"  overflow="hidden" className="signinForm" marginTop="10px" marginBottom="10px">
+      <Center fontSize="25px">
+        Sign In
+            </Center>
       {/* Sign In is Email and PW 
     Link to forgot pw
     Link to register if not alreay

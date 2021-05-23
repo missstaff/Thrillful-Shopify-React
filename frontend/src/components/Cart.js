@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from "react-router-dom";
 import { ShopContext } from '../context/shopContext'
+import { AddIcon, MinusIcon, SmallCloseIcon } from '@chakra-ui/icons'
 import {
+    Center,
     Drawer,
     DrawerBody,
     DrawerFooter,
@@ -16,7 +18,7 @@ import {
     Flex,
     Image,
     Link,
-    Box
+    Box,
 } from "@chakra-ui/react"
 
 
@@ -45,7 +47,7 @@ const Cart = () => {
             >
                 <DrawerOverlay>
                     <DrawerContent>
-                        {/* <DrawerCloseButton /> */}
+
                         <DrawerHeader>Your Shopping Cart</DrawerHeader>
 
                         <DrawerBody>
@@ -53,9 +55,7 @@ const Cart = () => {
                                 checkout.lineItems?.length ? checkout.lineItems.map(item => (
                                     <Grid h="100px" templateRows="repeat(3, 1fr)" templateColumns="repeat(4, 3fr)" gap={4} key={item.id} marginBottom="6" >
                                         <GridItem rowSpan={1}>
-                                            <Link style={{ color: "red", fontSize: "13px" }} cursor="pointer" onClick={() => removeLineItem(item.id)}>
-                                                remove
-                                             </Link>
+                                             <SmallCloseIcon cursor="pointer" onClick={() => removeLineItem(item.id)}/>
                                         </GridItem>
                                         <GridItem rowSpan={3} colSpan={1}>
                                             <Link onClick={() => { backToProduct(item.variant.product.handle); closeCart(); }}>
@@ -83,9 +83,11 @@ const Cart = () => {
                                         </GridItem>
                                         <GridItem rowSpan={1} colSpan={1}>
                                             {/* Quantity */}     
-                                            <Button size="xs" marginRight="2" key={-1} value={item.quantity - 1} onClick={() => updateLineItemQty(item.id, item.quantity - 1)}>-</Button>                                            
+                                            <MinusIcon marginRight="10px" cursor="pointer" onClick={() => updateLineItemQty(item.id, item.quantity - 1)}/>
+                                            {/* <Button size="xs" marginRight="2" color="#ff0000" backgroundColor="black" style={{ fontWeight: "bold", fontSize: "25px"}} key={-1} value={item.quantity - 1} onClick={() => updateLineItemQty(item.id, item.quantity - 1)}>-</Button>                                             */}
                                             {item.quantity}
-                                            <Button size="xs" marginLeft="2" key={1} value={item.quantity + 1} onClick={() => updateLineItemQty(item.id, item.quantity + 1)}>+</Button>
+                                            {/* <Button size="xs" marginLeft="2" color="#ff0000" backgroundColor="black" style={{ fontWeight: "bold", fontSize: "18px" }} key={1} value={item.quantity + 1} onClick={() => updateLineItemQty(item.id, item.quantity + 1)}>+</Button> */}
+                                            <AddIcon marginLeft="10px" cursor="pointer" onClick={() => updateLineItemQty(item.id, item.quantity + 1)}/>
                                         </GridItem>
                                     </Grid>
                                 )) :
@@ -103,25 +105,23 @@ const Cart = () => {
                         </DrawerFooter>
 
                         <DrawerFooter>
-                            <Button w="100%" onClick={() => { continueShoppingRoute(); closeCart(); }}>
+                            <Button w="100%" color="#ff0000" backgroundColor="black" onClick={() => { continueShoppingRoute(); closeCart(); }}>
                                 Continue Shopping
                             </Button>
                         </DrawerFooter>
 
                         {checkout.lineItems?.length ?
                             <DrawerFooter>
-                                <Button w="100%">
+                                <Button  w="100%" color="#ff0000" backgroundColor="black">
                                     <Link href={checkout.webUrl}>
                                         Checkout
                                     </Link>
                                 </Button>
                             </DrawerFooter> : null
                         }
-
                     </DrawerContent>
                 </DrawerOverlay>
             </Drawer>
-
         </>
     )
 }

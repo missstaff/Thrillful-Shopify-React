@@ -6,6 +6,7 @@ import { ShopContext } from '../context/shopContext'
 import { Flex, Text, Icon, Box, Badge } from '@chakra-ui/react'
 import { MdMenu, MdShoppingCart, MdAccountCircle } from 'react-icons/md'
 import { useContext } from 'react';
+import '../index.css';
 
 
 const NavBar = () => {

@@ -70,7 +70,7 @@ const Product = () => {
                         }
                     }
                         _hover={{ opacity: '70%' }}
-                        w="10rem" backgroundColor="#ff0000" _focus="none"
+                        w="10rem" color="#ff0000" backgroundColor="black" _focus="none"
                     >Add to cart</Button>
                 </Flex>
             </Grid>
