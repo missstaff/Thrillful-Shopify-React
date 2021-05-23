@@ -51,13 +51,24 @@ const Product = () => {
                         }                        
                     </Select>
                     {/* NEED ERROR HANDLING */}
-                    <Select marginTop="5" size="sm" w="23%" onChange={handleQty} required>
-                        <option key={1}value={1} defaultValue>1</option>
+                    <Select placeholder="Select Qty." marginTop="5" size="sm" w="23%" onChange={handleQty} required>
+                        <option key={1}value={1}>1</option>
                         <option key={2}value={2}>2</option>
                         <option key={3}value={3}>3</option>
                     </Select>
                     <Button marginTop="5"
-                        onClick={() => addItemToCheckout(Size, Qty /*need code to be able to select quantity*/)}
+                        onClick=
+                        {() => {if (Qty >= 1 && Size !==' '){
+                            addItemToCheckout(Size, Qty)
+                        }
+                        else if (Size == ' ') {
+                            alert("Please select a size")
+                        }
+                        else {
+                            alert("Please select qty.")
+                        }
+                        }
+                    }
                         _hover={{ opacity: '70%' }}
                         w="10rem" backgroundColor="#ff0000" _focus="none"
                     >Add to cart</Button>
