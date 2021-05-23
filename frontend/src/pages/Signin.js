@@ -66,7 +66,7 @@ export const Signin = () => {
       <FormControl className="form">
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
-          type="email"
+          type="Email"
           id="email"
           placeholder="Enter email"
           required
