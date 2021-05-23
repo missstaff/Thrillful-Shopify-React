@@ -42,7 +42,7 @@ const NavMenu = () => {
                         </VStack>
                     </DrawerBody>
                     <VStack>
-                   <DrawerFooter>
+                   <DrawerFooter color="#ff0000">
                     <Link to="/about" textAlign="center" style={{ fontWeight: "bold" }}>About Us</Link>
                     </DrawerFooter>
                    </VStack>
