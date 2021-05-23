@@ -1,10 +1,10 @@
-.SigninForm{
+/* .SigninForm{
     margin: auto;
   width: 50%;
   border: 3px solid #ff0000;
   padding: 10px;
 
-}
+} */
 
 .center {
     margin: auto;
@@ -18,9 +18,9 @@
     height: 250px;
     }
 
-.contactForm{
+.contactForm, .registerForm, .signinForm{
     margin: auto;
+    border: 1px solid #ff0000;
     width: 50%;
-    /* border: 3px solid #000000;  */
     padding: 10px;
 }
