@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Client from 'shopify-buy';
 
-
+//creating adtabase conneciton string
 const ShopContext = React.createContext();
 /*Builds the client gets api credentials from .env file */
 const client = Client.buildClient({
@@ -97,6 +97,12 @@ class ShopProvider extends Component {
         const products = await client.product.fetchAll()
         //updates the state//
         this.setState({ products: products })
+        // this.setState({ products: products })
+        //added with miss.
+        //this willl show you all proudcts. //you can get names from there as well.
+        products.forEach(product => {
+            console.log("PRODUCT NAME: " + product.title + " Id: " + product.id )
+           });
     }
 
     /*using handle to fetch a product by name so the product name is in the browser link not a number~bette for SEO and branding*/

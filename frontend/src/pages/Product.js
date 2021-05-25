@@ -14,10 +14,33 @@ const Product = () => {
         setSize(e.target.value);
     }
 
+    const ratingClick = () => {
+        //be sure to console.log to check what you are sending.
+        fetch('http://localhost:5000/api/products/messages/new', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              identification: product.id,
+              item: product.handle,
+              reviews: {
+                text: 'test review',
+                ratings: 5,
+                username: 'test user'
+              }
+            })
+          })
+    }
+    
+                            
+    
+
     useEffect(() => {
         fetchProductWithHandle(handle)
     }, [fetchProductWithHandle, handle])
-
+console.log(product.id);
     if (!product.title) return <div>Loading...</div>
     return (
         <Box p="2rem">
@@ -30,8 +53,8 @@ const Product = () => {
                     <Text fontWeight="bold" pb="2rem">${product.variants[0].price}</Text>
                     <Text pb="2rem">{product.description}</Text>
                     <Text pb="2rem">{/*product.rating*//*we need to add the ratings ourselves I think*/}</Text>
-                    <Rating>
-
+                    <Rating onPress={ratingClick}>
+                         
                     </Rating>
                     <Select placeholder="Choose size" marginTop="10" size="sm" w="25%" onChange={handleChange}>
                         {

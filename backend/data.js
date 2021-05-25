@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-const data = {
+const dataProd = {
     users: [
         {
             first_name: 'Miss',
@@ -16,7 +16,8 @@ const data = {
             email: 'user@example.com',
             password: bcrypt.hashSync('1234', 8),
             isAdmin: false,
-        },
+        },  
+ 
     ],
 };
-export default data;
+export default dataProd;
