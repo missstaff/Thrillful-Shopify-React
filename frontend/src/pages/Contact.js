@@ -4,9 +4,6 @@ import '../css/form.css';
 
 const Contact = () => {
 
-
-
-
     return (
         <Box maxW="lg" borderRadius="lg"  overflow="hidden" className="contactForm" marginTop="10px" marginBottom="10px">
            <Center fontSize="25px">
@@ -39,7 +36,7 @@ const Contact = () => {
             <Center>
                 <Button
                     mt={4}
-                    colorScheme="red"
+                    color="white" backgroundColor="#ff0000"
                     type="submit"
                 >
                     Send

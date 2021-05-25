@@ -105,14 +105,14 @@ const Cart = () => {
                         </DrawerFooter>
 
                         <DrawerFooter>
-                            <Button w="100%" color="#ff0000" backgroundColor="black" onClick={() => { continueShoppingRoute(); closeCart(); }}>
+                            <Button w="100%" color="white" backgroundColor="#ff0000" onClick={() => { continueShoppingRoute(); closeCart(); }}>
                                 Continue Shopping
                             </Button>
                         </DrawerFooter>
 
                         {checkout.lineItems?.length ?
                             <DrawerFooter>
-                                <Button  w="100%" color="#ff0000" backgroundColor="black">
+                                <Button  w="100%" color="white" backgroundColor="#ff0000">
                                     <Link href={checkout.webUrl}>
                                         Checkout
                                     </Link>
