@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, { Fragment } from 'react';
 import Home from './pages/Home.js';
 import Products from './pages/Products.js';
 import Product from './pages/Product.js';
@@ -14,6 +15,7 @@ import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
 import About from './pages/About.js';
+import { Stack } from '@chakra-ui/layout';
 
 
 
@@ -56,7 +58,7 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
-        </Switch>
+          </Switch>
         <Footer />
       </Router>
     </div>
