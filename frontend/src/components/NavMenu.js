@@ -21,7 +21,7 @@ const NavMenu = () => {
     return (
         <Drawer isOpen={isMenuOpen} onClose={closeMenu} placement="left" size="sm">
             <DrawerOverlay>
-                <DrawerContent  bgGradient="linear(to-r, black 55%, #ff0000)">
+                <DrawerContent  bgGradient="linear(to-r, black 60%, #ff0000)">
                     <DrawerCloseButton />
                     <DrawerHeader textAlign="center" color="#ffffff" _hover={{ color:"#ff0000"}} ><Link to="/collections" style={{ fontWeight: "bold" }}onClick={closeMenu}>Categories</Link></DrawerHeader>
                     <DrawerBody flexDirection="row" color="white" alignItems="center" justifyContent="space-between" >
