@@ -5,6 +5,7 @@ import path from 'path';
 //import data from './data.js';
 import userRouter from './routers/userRouter.js';
 import contactRouter from './routers/contact.router.js';
+import cors from 'cors';
 
 const port = process.env.PORT || 5000;
 
