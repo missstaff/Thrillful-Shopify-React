@@ -10,10 +10,9 @@ const Hero = () => {
         return false;
     }
     return (
-        <Box w='100%' position='relative' backgroundColor="black">
-            <Image w="100%" h='10%' src="/../ThrillfulBanner.png" /*banner image path here*/
-                m='auto' objectFit='scale-down'
-                objectPosition={['top', 'center']}
+        <Box >
+            <Image src="/../ThrillfulBanner.png" h="250px " w="100%"/*banner image path here*/
+               objectPosition={['top', 'center']}
             />
         </Box>
     )
