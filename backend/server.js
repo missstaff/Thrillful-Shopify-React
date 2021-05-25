@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 //import data from './data.js';
 import userRouter from './routers/userRouter.js';
+import contactRouter from './routers/contact.router.js';
 
 const port = process.env.PORT || 5000;
 
@@ -11,6 +12,7 @@ dotenv.config();
 const app = express();
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
+app.use(cors({ credentials: true, origin: 'http://localhost:3000'}));
 
 
 mongoose.connect(process.env.MONGODB_URL, {
@@ -24,6 +26,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 // });
 
 app.use('/api/users', userRouter);
+app.use('/api/contact', contactRouter);
 
 const __dirname = path.resolve();
 

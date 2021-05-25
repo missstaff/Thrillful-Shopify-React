@@ -1,51 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
 import '../css/form.css';
+import { success, error, warning, reset } from '../actions/messageActions';
+import { useDispatch } from 'react-redux';
 
 const Contact = () => {
+    const dispatch = useDispatch();
+    const [customer, setCustomer] = useState({
+        fullName: '',
+        email: '',
+        message: '',
+        subject: '',
+    });
+
+    //Gets current customer which is an empty string. 
+//e.target.name is on every input field to match the state varaible 
+//e.target.value is the input the customer puts in
+const handleChange = (e) => {
+    setCustomer({
+      ...customer,
+      [e.target.name]: e.target.value,
+    })
+    // console.log('INSIDE HANDLE CHANGE');
+    // console.log(customer.fullName);
+}
+
+// console.log('OUTSIDE HANDLE CHANGE');
+// console.log(customer.fullName);
 
 
+//prevent default prevents html from refreshing 
+const handleSubmit= (e) => {
+    e.preventDefault();
+    console.log(customer);
+    axios.post('http://localhost:5000/api/contact', customer);
+    setCustomer({
+        fullName: '',
+        email: '',
+        message: ''
+    });
+    dispatch(success({
+        content: 'Thank you for your submission!',
+        variant: 'success',
+        isActive: true,
+    }));
+    // setTimeout(() => {
+    //     dispatch(reset())
+    // }, 3000);
+    // }
 
+}
+
+//Handel submit in form tag and submit on type for the buttonIf not in the form element it can be placed in the button element
 
     return (
         <Box maxW="lg" borderRadius="lg"  overflow="hidden" className="contactForm" marginTop="10px" marginBottom="10px">
            <Center fontSize="25px">
                Contact Us
             </Center> 
-            
-            <FormControl id="firstName" className="" isRequired>
-                <FormLabel>First Name</FormLabel>
-                <Input placeholder="First name" />
-            </FormControl>
 
-            <FormControl id="lastName" className="" isRequired>
-                <FormLabel>Last Name</FormLabel>
-                <Input placeholder="First name" />
+            <form onSubmit={handleSubmit}>
+
+            <FormControl id="fullName" className="" isRequired>
+                <FormLabel>Full Name</FormLabel>
+                <Input onChange={handleChange} name='fullName' value={customer.fullName} placeholder="First name" />
             </FormControl>
 
             <FormControl id="email" className="" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input onChange={handleChange} name='email' value={customer.email} type="email" />
 
             </FormControl>
 
-            <FormControl id="message" isRequired maxlength="1000">
+            <FormControl id="subject" isRequired maxlength="1000">
+                  <FormLabel> Subject </FormLabel>
+                  <Input onChange={handleChange} name='subject' value={customer.subject} placeholder="Subject" />
+
+              </FormControl>
+
+            <FormControl id="message" isRequired maxlength="2000">
                 <FormLabel> Message </FormLabel>
-                <Input placeholder="Message for Thrillful" />
+                <Input onChange={handleChange} name='message' value={customer.message} placeholder="Message for Thrillful" />
 
             </FormControl>
     
 
             <Center>
-                <Button
-                    mt={4}
-                    colorScheme="red"
-                    type="submit"
-                >
-                    Send
-          </Button>
+            <Button
+                      mt={4}
+                      colorScheme="red"
+                      type='submit'
+                      // type="button"
+                      // onClick={handleSubmit}
+                  >
+                      Send
+                  </Button>
             </Center>
-
+            </form>
 
         </Box>
     )
