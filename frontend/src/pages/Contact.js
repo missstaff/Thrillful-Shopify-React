@@ -26,6 +26,7 @@ const handleChange = (e) => {
     // console.log(customer.fullName);
 }
 
+
 // console.log('OUTSIDE HANDLE CHANGE');
 // console.log(customer.fullName);
 
@@ -87,15 +88,14 @@ const handleSubmit= (e) => {
     
 
             <Center>
-            <Button
-                      mt={4}
-                      colorScheme="red"
-                      type='submit'
-                      // type="button"
-                      // onClick={handleSubmit}
-                  >
-                      Send
-                  </Button>
+                <Button
+                    mt={4}
+                    color="white" backgroundColor="#ff0000"
+                    type="submit"
+                >
+                    Send
+          </Button>
+
             </Center>
             </form>
 

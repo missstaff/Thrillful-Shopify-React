@@ -13,9 +13,10 @@ const Footer = () => {
                         <Text _hover={{ color: '#ff0000' }}><Link to='/contact'>Contact Us</Link></Text>
                     </HStack>
                     <HStack >
-                    <SocialIcon url="https://facebook.com" />
+                        {/* These are social media icons. Uncomment and add path to your personal accounts */}
+                    {/* <SocialIcon url="https://facebook.com" />
                     <SocialIcon url="https://instagram.com" />
-                    <SocialIcon url="https://twitter.com" />
+                    <SocialIcon url="https://twitter.com" /> */}
                     </HStack>
                 </VStack>
 
