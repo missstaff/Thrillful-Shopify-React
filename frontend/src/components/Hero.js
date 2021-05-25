@@ -5,7 +5,8 @@ import { Box, Text, Image } from '@chakra-ui/react';
 
 /*Banner is currently applied to all pages via Apps.js but can be applied individually*/
 const Hero = () => {
-    if (window.location.pathname === '/about' || window.location.pathname === '/contact' || window.location.pathname === '/signin' || window.location.pathname === '/Register') {
+    let path = window.location.pathname;
+    if (path === '/about' ||path === '/contact' || path === '/signin' || path === '/Register') {
         return false;
     }
     return (
