@@ -1,7 +1,13 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { userRegisterReducer, userSigninReducer } from './reducers/userReducer.js';
+import { messageReducer } from './reducers/messageReducer.js';
 
+// const initialState = {};
+// const reducer = (state, action) => {
+//     return { userSignin : userSigninReducer,
+//             message: messageReducer };
+// };
 
 const initialState = {
     userSignin: {
@@ -12,7 +18,9 @@ const initialState = {
 
 const reducer = combineReducers({
     userSignin: userSigninReducer,
-    userRegister: userRegisterReducer
+    userRegister: userRegisterReducer,
+    message: messageReducer
+
 });
 
 
