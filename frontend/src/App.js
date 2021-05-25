@@ -15,11 +15,24 @@ import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
 import About from './pages/About.js';
-import { Box } from '@chakra-ui/react';
+
+import MessageBox from './components/MessageBox';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 function App() {
+  const message = useSelector((state) => state.message);
+
+  console.log(message);
+
   return (
-    <Box className="App">
+
+    <div className="App">
+      {/* {message.isActive && (
+        <MessageBox />
+        )} */}
+
       <Router>
         <NavBar />
         <Cart />
