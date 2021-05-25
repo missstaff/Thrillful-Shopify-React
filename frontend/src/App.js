@@ -72,7 +72,7 @@ function App() {
           </Switch>
         <Footer />
       </Router>
-    </Box>
+    </div>
   );
 }
 
