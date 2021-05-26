@@ -138,7 +138,7 @@ export const Register = () => {
         <Center>
           <Button
             mt={4}
-            colorScheme="red"
+            color="white" backgroundColor="#ff0000"
             type="submit"
             onClick={submitHandler}
           >
