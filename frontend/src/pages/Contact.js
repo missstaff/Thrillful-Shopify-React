@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
 import '../css/form.css';
-import { success, error, warning, reset } from '../actions/messageActions';
+import { success, error, warning, reset } from '../redux/messageSlice';
+// import { success, error, warning, reset } from '../actions/messageActions';
 import { useDispatch } from 'react-redux';
 
 const Contact = () => {
@@ -40,16 +41,7 @@ const handleSubmit= (e) => {
         email: '',
         message: ''
     });
-    dispatch(success({
-        content: 'Thank you for your submission!',
-        variant: 'success',
-        isActive: true,
-    }));
-    // setTimeout(() => {
-    //     dispatch(reset())
-    // }, 3000);
-    // }
-
+    dispatch(success('Thank you for your submission!'));
 }
 
 //Handel submit in form tag and submit on type for the buttonIf not in the form element it can be placed in the button element

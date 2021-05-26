@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { register } from '../actions/userActions.js';
+import { register, selectUser } from '../redux/userSlice';
+// import { register } from '../actions/userActions.js';
 import { Box, Button, Input, Center, FormLabel, FormControl, Heading, Text } from '@chakra-ui/react';
 import MessageBox from '../components/MessageBox.js';
 import LoadingBox from '../components/LoadingBox.js';
@@ -25,8 +26,9 @@ export const Register = () => {
     ? history.location.search.split('=')[1]
     : '/';
 
-  const userRegister = useSelector((state) => state.userRegister);
-  const { userInfo, loading, error } = userRegister;
+    const { user } = useSelector(selectUser);
+  // const userRegister = useSelector((state) => state.userRegister);
+  // const { userInfo, loading, error } = userRegister;
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
@@ -39,10 +41,11 @@ export const Register = () => {
   };
 
   useEffect(() => {
-    if (userInfo) {
+    if (user.info) {
+      // if (userInfo) {
       history.push(redirect);
     }
-  }, [history, redirect, userInfo]);
+  }, [history, redirect, user.info]);
 
   // className="SigninForm"
   return (
@@ -54,8 +57,10 @@ export const Register = () => {
     Link to forgot pw
     Link to register if not alreay
     */}
-      {loading && <LoadingBox></LoadingBox>}
-      {error && <MessageBox variant="danger">{error}</MessageBox>}
+      {user.status === 'loading' && <LoadingBox></LoadingBox>}
+      {/* {loading && <LoadingBox></LoadingBox>} */}
+      {/* Putting messages in front to be used anywhere */}
+      {/* {error && <MessageBox variant="danger">{error}</MessageBox>} */}
 
       <FormControl className="form">
 

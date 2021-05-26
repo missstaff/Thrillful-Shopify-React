@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import ShopProvider from "./context/shopContext";
 import { ChakraProvider } from '@chakra-ui/react';
 import {Provider} from 'react-redux'
-import store from './store.js';
+import { store } from './store.js';
 
 
 ReactDOM.render(

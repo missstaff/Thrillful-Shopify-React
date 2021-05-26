@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signout } from '../actions/userActions.js';
+import { signout, selectUser } from '../redux/userSlice';
+// import { signout } from '../actions/userActions.js';
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../context/shopContext'
 import { Flex, Text, Icon, Box, Badge } from '@chakra-ui/react'
@@ -9,13 +10,15 @@ import { useContext } from 'react';
 import '../index.css';
 
 
+
 const NavBar = () => {
 
     const { openCart, openMenu, checkout } = useContext(ShopContext)
 
     //to change state of login on navbar//
-    const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo } = userSignin;
+    // const userSignin = useSelector((state) => state.userSignin);
+    // const { userInfo } = userSignin;
+    const { user } = useSelector(selectUser);
     const dispatch = useDispatch();
     const signoutHandler = () => {
         dispatch(signout());
@@ -39,7 +42,8 @@ const NavBar = () => {
                     {checkout.lineItems?.length}
                 </Badge>
             </Box>
-                {userInfo ? (
+                {user.info ? (
+                // {userInfo ? (
 
                     <Link to="#signout" onClick={signoutHandler}>
                         <Text color="#ffffff">
