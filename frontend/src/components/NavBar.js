@@ -1,4 +1,4 @@
-import {React} from 'react';
+import { React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/userActions.js';
 import { Link } from 'react-router-dom'
@@ -12,13 +12,13 @@ import '../index.css';
 
 const NavBar = () => {
 
-   
+
     const { openCart, openMenu, checkout } = useContext(ShopContext)
 
     //to change state of login on navbar//
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
-    
+
     const dispatch = useDispatch();
     const signoutHandler = () => {
         dispatch(signout());
@@ -34,22 +34,38 @@ const NavBar = () => {
                 <Text textAlign="center" color="white" fontSize={44} _hover={{ color: '#ff0000' }}>Thrillful</Text>
             </Link>
             <div>
-                  <Box>
-                <Icon fill="white" cursor="pointer" as={MdShoppingCart} w={30} h={30}
-                    onClick={() => openCart()}
-                />
-                <Badge backgroundColor="#ff0000" borderRadius="50%">
-                    {checkout.lineItems?.length}
-                </Badge>
-            </Box>
+                <Box>
+                    <Icon fill="white" cursor="pointer" as={MdShoppingCart} w={30} h={30}
+                        onClick={() => openCart()}
+                    />
+                    <Badge backgroundColor="#ff0000" borderRadius="50%">
+                        {checkout.lineItems?.length}
+                    </Badge>
+                </Box>
                 {userInfo ? (
 
                     <Link to="#signout" onClick={signoutHandler}>
-                        <Text color="#ffffff">
-                            {userInfo.username}
-                      </Text>
+                        <Text color="#ffffff">{userInfo ? (
+                            <div className="dropdown" >
+                                <Link to="#" color="#ffffff">
+                                    {userInfo.username} <i className="fa fa-caret-down"></i>{' '}
+                                </Link>
+                                <ul className="dropdown-content">
+                                    <li>
+                                        <Link to="/profile">User Profile</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="#signout" onClick={signoutHandler}>
+                                            Sign Out
                     </Link>
-
+                                    </li>
+                                </ul>
+                            </div>
+                        ) : (
+                            <Link to="/signin">Sign In</Link>
+                        )} 
+                        </Text>
+                    </Link>
                 ) : (
                     <Link to="/signin">
                         <Text color="#ffffff">
@@ -57,9 +73,9 @@ const NavBar = () => {
                   </Text>
                     </Link>
                 )}
-               
+
             </div>
-           
+
 
 
         </Flex>

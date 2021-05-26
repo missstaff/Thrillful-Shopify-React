@@ -15,6 +15,7 @@ import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
 import About from './pages/About.js';
+import Profile from './pages/Profile.js';
 
 import MessageBox from './components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,8 +52,11 @@ function App() {
           <Route path="/signin/" component={Signin}>
             <Signin />
           </Route>
-          <Route path="/register/">
+          <Route path="/register/" component={Register}>
             <Register />
+          </Route>
+          <Route path="/profile/" component={Profile}>
+            <Profile />
           </Route>
           <Route path="/all-products/">
             <Products />
