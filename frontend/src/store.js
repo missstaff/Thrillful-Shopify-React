@@ -1,39 +1,40 @@
-import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
-import { userRegisterReducer, userSigninReducer } from './reducers/userReducer.js';
-import { messageReducer } from './reducers/messageReducer.js';
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from './redux/userSlice';
+import messageReducer from './redux/messageSlice';
 
-// const initialState = {};
-// const reducer = (state, action) => {
-//     return { userSignin : userSigninReducer,
-//             message: messageReducer };
-// };
-
-const initialState = {
-    userSignin: {
-        userInfo: localStorage.getItem("userInfo")?
-        JSON.parse(localStorage.getItem("userInfo")) : null
-    }
-};
-
-const reducer = combineReducers({
-    userSignin: userSigninReducer,
-    userRegister: userRegisterReducer,
-    message: messageReducer
-
+export const store = configureStore({
+    reducer: {
+        user: userReducer,
+        message: messageReducer,
+    },
 });
 
+// import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
+// import thunk from 'redux-thunk';
+// import { userRegisterReducer, userSigninReducer } from './reducers/userReducer.js';
+// import { messageReducer } from './reducers/messageReducer.js';
 
-// const reducer = (state, action) => {
-//     return { userSignin : userSigninReducer };
+// const initialState = {
+//     userSignin: {
+//         userInfo: localStorage.getItem("userInfo")?
+//         JSON.parse(localStorage.getItem("userInfo")) : null
+//     }
 // };
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-    reducer, 
-    initialState,
-    composeEnhancer(applyMiddleware(thunk))
-    );
+// const reducer = combineReducers({
+//     userSignin: userSigninReducer,
+//     userRegister: userRegisterReducer,
+//     message: messageReducer
+
+// });
 
 
-export default store
+// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const store = createStore(
+//     reducer, 
+//     initialState,
+//     composeEnhancer(applyMiddleware(thunk))
+//     );
+
+
+// export default store
