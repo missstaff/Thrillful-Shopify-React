@@ -43,36 +43,32 @@ const NavBar = () => {
                     </Badge>
                 </Box>
                 {userInfo ? (
-
+              <div className="dropdown">
+                <Text color="#ffffff" fontSize={20}>
+                <Link to="#">
+                  {userInfo.username} <i className="fa fa-caret-down"></i>{' '}
+                </Link>
+                </Text>
+                <ul className="dropdown-content">
+                  <li>
+                   <Text fontSize={20}>
+                   <Link to="/profile">User Profile</Link>
+                   </Text>
+                  </li>
+                  <li>
+                    <Text fontSize={20}>
                     <Link to="#signout" onClick={signoutHandler}>
-                        <Text color="#ffffff">{userInfo ? (
-                            <div className="dropdown" >
-                                <Link to="#" color="#ffffff">
-                                    {userInfo.username} <i className="fa fa-caret-down"></i>{' '}
-                                </Link>
-                                <ul className="dropdown-content">
-                                    <li>
-                                        <Link to="/profile">User Profile</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="#signout" onClick={signoutHandler}>
-                                            Sign Out
+                      Sign Out
                     </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        ) : (
-                            <Link to="/signin">Sign In</Link>
-                        )} 
-                        </Text>
-                    </Link>
-                ) : (
-                    <Link to="/signin">
-                        <Text color="#ffffff">
-                            Sign In
-                  </Text>
-                    </Link>
-                )}
+                    </Text>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+             <Text color="#ffffff">
+                  <Link to="/signin">Sign In</Link>
+             </Text>
+            )}
 
             </div>
 
