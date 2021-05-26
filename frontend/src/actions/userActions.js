@@ -9,10 +9,10 @@ import {
   USER_REGISTER_SUCCESS
 } from '../constants/userConstants';
 
-export const signin = (email, password) => async (dispatch) => {
+export const signin = (email, password, username) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    const { data } = await Axios.post('/api/users/signin', { email, password });
+    const { data } = await Axios.post('/api/users/signin', { email, password, username });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {

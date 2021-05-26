@@ -25,12 +25,10 @@ export const Signin = () => {
   const { userInfo, loading, error } = userSignin;
 
   const dispatch = useDispatch();
+  
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signin(email, password));
-    // if(!userInfo) {
-    //   alert("Invalid username or password")
-    // }
   };
 
   useEffect(() => {
@@ -38,19 +36,6 @@ export const Signin = () => {
         history.push(redirect);
     }
   }, [history, redirect, userInfo]);
-
-
-  // useEffect(() => {
-  //   try {
-  //   if (userInfo) {
-  //    history.push('/all-products')
-  //   } 
-  //   } catch (e) {
-  //     alert(e.messagae);
-  //   }
-  //   }, [history, userInfo]);
-
-
 
 
   return (
