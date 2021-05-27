@@ -19,24 +19,27 @@ userRouter.get('/seed',
 );
 
 userRouter.post(
-    '/signin',
-    expressAsyncHandler(async (req, res) => {
-      const user = await User.findOne({ email: req.body.email });
-      console.log(user);
-      if (user) {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          res.send({
-            _id: user._id,
-            email: user.email,
-            password: user.password,
-            token: generateToken(user),
-          });
-          return res;
-        }
+  '/signin',
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        res.send({
+          _id: user._id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          isAdmin : user.isAdmin,
+          token: generateToken(user),
+        });
+        return res;
       }
-      res.status(401).send({ message: 'Invalid email or password' });
-    })
-  );
+    }
+    res.status(401).send({ message: 'Invalid email or password' });
+  })
+);
 
   userRouter.post(
     '/register',
