@@ -20,21 +20,20 @@ import Admin from './pages/Admin.js';
 
 import MessageBox from './components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { selectMessage } from './redux/messageSlice';
 
 
 function App() {
-  const message = useSelector((state) => state.message);
+  const{ message } = useSelector(selectMessage);
 
   console.log(message);
 
   return (
 
     <div className="App">
-      {/* {message.isActive && (
+      {message.isActive && (
         <MessageBox />
-        )} */}
-
+        )}
       <Router>
         <NavBar />
         <Cart />

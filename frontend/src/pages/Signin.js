@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { signin } from '../actions/userActions.js';
+import { signin, selectUser } from '../redux/userSlice';
+// import { signin } from '../actions/userActions.js';
 import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
 import MessageBox from '../components/MessageBox.js';
 import LoadingBox from '../components/LoadingBox.js';
@@ -21,8 +22,9 @@ export const Signin = () => {
     ? history.location.search.split('=')[1]
     : '/';
 
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, loading, error } = userSignin;
+  const { user } = useSelector(selectUser);
+  // const userSignin = useSelector((state) => state.userSignin);
+  // const { userInfo, loading, error } = userSignin;
 
   const dispatch = useDispatch();
   
@@ -32,10 +34,11 @@ export const Signin = () => {
   };
 
   useEffect(() => {
-     if (userInfo) {
+    if (user.info) {
+    //  if (userInfo) {
         history.push(redirect);
     }
-  }, [history, redirect, userInfo]);
+  }, [history, redirect, user.info]);
 
 
   return (
@@ -47,8 +50,8 @@ export const Signin = () => {
     Link to forgot pw
     Link to register if not alreay
     */}
-     {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant="danger">{error}</MessageBox>}
+     {/* {loading && <LoadingBox></LoadingBox>} */}
+     {user.status === 'loading' && <LoadingBox></LoadingBox>}
 
       <FormControl className="form">
         <FormLabel htmlFor="email">Email address</FormLabel>
