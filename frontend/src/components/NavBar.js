@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+//Replaces the actions and all put in userslice
 import { signout, selectUser } from '../redux/userSlice';
 // import { signout } from '../actions/userActions.js';
 import { Link } from 'react-router-dom'
