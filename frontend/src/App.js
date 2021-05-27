@@ -16,6 +16,7 @@ import Footer from './components/Footer.js';
 import Hero from './components/Hero.js';
 import About from './pages/About.js';
 import Profile from './pages/Profile.js';
+import Admin from './pages/Admin.js';
 
 import MessageBox from './components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/contact/" component={Contact}>
             <Contact />
+          </Route>
+          <Route path="/admin/">
+            <Admin />
           </Route>
           <Route path="/adminbanner/">
             <AdminBanner />
