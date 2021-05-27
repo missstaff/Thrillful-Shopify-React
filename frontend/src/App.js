@@ -13,9 +13,9 @@ import Cart from './components/Cart.js';
 import NavBar from './components/NavBar.js';
 import NavMenu from './components/NavMenu.js';
 import Footer from './components/Footer.js';
-// import Hero from './components/Hero.js';
-import Banner from './pages/Banner.js';
+import Hero from './components/Hero.js';
 import About from './pages/About.js';
+
 import MessageBox from './components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMessage } from './redux/messageSlice';
@@ -36,9 +36,7 @@ function App() {
         <NavBar />
         <Cart />
         <NavMenu />
-        <Banner/>
-
-        {/* <Hero /> */}
+        <Hero />
         <Switch>
           <Route path="/about/" component={About}>
             <About />
