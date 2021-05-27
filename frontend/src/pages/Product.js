@@ -39,9 +39,7 @@ const Product = () => {
                     <Rating>
 
                     </Rating>
-
-                    {/* NEED ERROR HANDLING */}
-                    <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange} required>
+                   <Select placeholder="Select size" marginTop="10" size="sm" w="23%" onChange={handleChange} required>
                         {
                             sizes.map(size => (
                                 <option key={size.id} value={size.id}>                     
@@ -50,7 +48,6 @@ const Product = () => {
                             ))
                         }                        
                     </Select>
-                    {/* NEED ERROR HANDLING */}
                     <Select placeholder="Select Qty." marginTop="5" size="sm" w="23%" onChange={handleQty} required>
                         <option key={1}value={1}>1</option>
                         <option key={2}value={2}>2</option>
@@ -70,7 +67,7 @@ const Product = () => {
                         }
                     }
                         _hover={{ opacity: '70%' }}
-                        w="10rem" color="#ff0000" backgroundColor="black" _focus="none"
+                        w="10rem" color="white" backgroundColor="#ff0000" _focus="none"
                     >Add to cart</Button>
                 </Flex>
             </Grid>
