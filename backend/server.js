@@ -18,6 +18,7 @@ app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 app.use(cors());
 //{ credentials: true, origin: 'http://localhost:3000'}
+//whoreface
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
