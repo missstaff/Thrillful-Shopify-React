@@ -5,7 +5,7 @@ import path from 'path';
 //import data from './data.js';
 import userRouter from './routers/userRouter.js';
 import imageRouter from './routers/imageRouter.js'
-import morgan from 'morgan';
+//import morgan from 'morgan';
 import contactRouter from './routers/contact.router.js';
 import cors from 'cors';
 
