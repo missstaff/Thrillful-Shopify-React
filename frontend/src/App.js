@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 import Home from './pages/Home.js';
 import Products from './pages/Products.js';
@@ -22,7 +22,7 @@ import { selectMessage } from './redux/messageSlice';
 
 
 function App() {
-  const{ message } = useSelector(selectMessage);
+  const { message } = useSelector(selectMessage);
 
   console.log(message);
 
@@ -31,12 +31,12 @@ function App() {
     <div className="App">
       {message.isActive && (
         <MessageBox />
-        )}
+      )}
       <Router>
         <NavBar />
         <Cart />
         <NavMenu />
-        <Banner/>
+        <Banner />
 
         {/* <Hero /> */}
         <Switch>
@@ -70,7 +70,7 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
-          </Switch>
+        </Switch>
         <Footer />
       </Router>
     </div>
