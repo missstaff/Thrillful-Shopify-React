@@ -9,7 +9,7 @@ import morgan from 'morgan';
 import contactRouter from './routers/contact.router.js';
 import cors from 'cors';
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 dotenv.config();
 const app = express();
