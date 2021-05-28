@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 
 dotenv.config();
 const app = express();
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 app.use(cors());
