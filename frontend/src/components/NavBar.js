@@ -1,70 +1,116 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { signout, selectUser } from '../redux/userSlice';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signout, selectUser } from "../redux/userSlice";
 // import { signout } from '../actions/userActions.js';
-import { Link } from 'react-router-dom'
-import { ShopContext } from '../context/shopContext'
-import { Flex, Text, Icon, Box, Badge } from '@chakra-ui/react'
-import { MdMenu, MdShoppingCart, MdAccountCircle } from 'react-icons/md'
-import { useContext } from 'react';
-import '../index.css';
-
-
+import { Link } from "react-router-dom";
+import { ShopContext } from "../context/shopContext";
+import {
+  Flex,
+  Text,
+  Icon,
+  Badge,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { MdMenu, MdShoppingCart, MdAccountCircle } from "react-icons/md";
+import { useContext } from "react";
+import "../index.css";
+import "../css/navbar.css";
 
 const NavBar = () => {
+  const { openCart, openMenu, checkout } = useContext(ShopContext);
 
-    const { openCart, openMenu, checkout } = useContext(ShopContext)
+  //to change state of login on navbar//
+  // const userSignin = useSelector((state) => state.userSignin);
+  // const { userInfo } = userSignin;
+  const { user } = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const signoutHandler = () => {
+    dispatch(signout());
+  };
 
-    //to change state of login on navbar//
-    // const userSignin = useSelector((state) => state.userSignin);
-    // const { userInfo } = userSignin;
-    const { user } = useSelector(selectUser);
-    const dispatch = useDispatch();
-    const signoutHandler = () => {
-        dispatch(signout());
-    };
+  console.log(user);
 
-    return (
+  return (
+    <Flex
+      backgroundColor="#000000"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="space-between"
+      /*navbar element spacing*/ padding="2rem"
+    >
+      <Icon
+        fill="white"
+        cursor="pointer"
+        as={MdMenu}
+        w={30}
+        h={30}
+        onClick={() => openMenu()}
+      ></Icon>
+      <Link to="/">
+        <Text
+          textAlign="center"
+          color="white"
+          fontSize={44}
+          _hover={{ color: "#ff0000" }}
+        >
+          Thrillful
+        </Text>
+      </Link>
 
-        <Flex backgroundColor="#000000" flexDirection="row" alignItems="center" justifyContent="space-between" /*navbar element spacing*/ padding="2rem">
-            <Icon fill="white" cursor="pointer" as={MdMenu} w={30} h={30}
-                onClick={() => openMenu()}
-            ></Icon>
-            <Link to="/">
-                <Text textAlign="center" color="white" fontSize={44} _hover={{ color: '#ff0000' }}>Thrillful</Text>
+      <div className="navbar__right">
+        <div style={{ marginRight: "12px" }}>
+          <Icon
+            fill="white"
+            cursor="pointer"
+            as={MdShoppingCart}
+            w={30}
+            h={30}
+            onClick={() => openCart()}
+          />
+          <Badge backgroundColor="#ff0000" borderRadius="50%">
+            {checkout.lineItems?.length}
+          </Badge>
+        </div>
+        <div className="navbar__profile">
+          {user.info ? (
+            // {userInfo ? (
+            <>
+              <Menu>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                  {user.info.first_name}
+                </MenuButton>
+                <MenuList>
+                  {user.info.isAdmin === true ? (
+                    <MenuItem>
+                      <Link to="/AdminBanner">AdminDashboard</Link>
+                    </MenuItem>
+                  ) : (
+                    <MenuItem>Profile</MenuItem>
+                  )}
+                  <MenuItem onClick={signoutHandler}>
+                    {/* <Link to="#signout" > */}
+                    <Text>Sign out</Text>
+                    {/* </Link> */}
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </>
+          ) : (
+            <Link to="/signin">
+              <Button>
+                <Text>Sign In</Text>
+              </Button>
             </Link>
-            <div>
-                  <Box>
-                <Icon fill="white" cursor="pointer" as={MdShoppingCart} w={30} h={30}
-                    onClick={() => openCart()}
-                />
-                <Badge backgroundColor="#ff0000" borderRadius="50%">
-                    {checkout.lineItems?.length}
-                </Badge>
-            </Box>
-                {user.info ? (
-                // {userInfo ? (
+          )}
+        </div>
+      </div>
+    </Flex>
+  );
+};
 
-                    <Link to="#signout" onClick={signoutHandler}>
-                        <Text color="#ffffff">
-                            Sign Out
-                      </Text>
-                    </Link>
-
-                ) : (
-                    <Link to="/signin">
-                        <Text color="#ffffff">
-                            Sign In
-                  </Text>
-                    </Link>
-                )}
-               
-            </div>
-           
-
-
-        </Flex>
-    )
-}
-
-export default NavBar
+export default NavBar;

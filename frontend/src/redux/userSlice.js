@@ -1,32 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { error } from './messageSlice.js';
-import axios from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
+import { error } from "./messageSlice.js";
+import axios from "axios";
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
     user: {
-      info: localStorage.getItem('userInfo')
-      ? JSON.parse(localStorage.getItem('userInfo'))
-      : null,
-      status: 'loggedOut',
-    }
+      info: localStorage.getItem("userInfo")
+        ? JSON.parse(localStorage.getItem("userInfo"))
+        : null,
+      status: localStorage.getItem("userInfo") ? "loggedIn" : "loggedOut",
+    },
   },
   reducers: {
     loading: (state) => {
       return {
         ...state,
         user: {
-          status: 'loading',
-        }
-      }
+          status: "loading",
+        },
+      };
     },
     loggedIn: (state, action) => {
       return {
         ...state,
         user: {
           info: action.payload,
-          status: 'loggedIn',
+          status: "loggedIn",
         },
       };
     },
@@ -35,28 +35,29 @@ export const userSlice = createSlice({
         ...state,
         user: {
           info: null,
-          status: 'loggedOut',
+          status: "loggedOut",
         },
       };
     },
     default: (state) => {
       return state;
     },
-  }
+  },
 });
 
 // actions are exported: action names become the 'action.type'
 
 export const { loading, loggedIn, loggedOut } = userSlice.actions;
 
-// thunks 
+// thunks
 
 export const signin = (email, password) => async (dispatch) => {
   dispatch(loading());
   try {
-    const { data } = await axios.post('/api/users/signin', { email, password });
+    const { data } = await axios.post("/api/users/signin", { email, password });
+    //gets overwritten to loggedin when we dispatch.
+    localStorage.setItem("userInfo", JSON.stringify(data));
     dispatch(loggedIn(data));
-    localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (err) {
     // import error() from messageSlice
     dispatch(loggedOut());
@@ -70,10 +71,11 @@ export const signin = (email, password) => async (dispatch) => {
   }
 };
 
-export const register = (first_name, last_name, username, email, password) => async (dispatch) => {
+export const register =
+  (first_name, last_name, username, email, password) => async (dispatch) => {
     dispatch(loading());
     try {
-      const { data } = await axios.post('/api/users/register', {
+      const { data } = await axios.post("/api/users/register", {
         first_name,
         last_name,
         username,
@@ -81,8 +83,10 @@ export const register = (first_name, last_name, username, email, password) => as
         password,
       });
       dispatch(loggedIn(data));
-      localStorage.setItem('userInfo', JSON.stringify(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (err) {
+      //Dispatch loggedout so it doesn't continue to spin.
+      dispatch(loggedOut());
       dispatch(
         error(
           err.response && err.response.data.message
@@ -94,8 +98,8 @@ export const register = (first_name, last_name, username, email, password) => as
   };
 
 export const signout = () => (dispatch) => {
-  localStorage.removeItem('userInfo');
-  localStorage.removeItem('cartItems');
+  localStorage.removeItem("userInfo");
+  localStorage.removeItem("cartItems");
   dispatch(loggedOut());
 };
 
