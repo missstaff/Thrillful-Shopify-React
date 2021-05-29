@@ -82,13 +82,14 @@ const NavBar = () => {
                   {user.info.first_name}
                 </MenuButton>
                 <MenuList border="none" bgColor="#000000">
-                  {user.info.isAdmin === true ? (
+                  {user.info.isAdmin === true && (
                     <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
-                      <Link to="/AdminBanner">AdminDashboard</Link>
+                      <Link to="/admin">AdminDashboard</Link>
                     </MenuItem>
-                  ) : (
-                    <MenuItem>Profile</MenuItem>
                   )}
+                  <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
+                    <Link to="/profile">Profile</Link>
+                  </MenuItem>
                   <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }} onClick={signoutHandler}>
                     {/* <Link to="#signout" > */}
                     <Text>Sign out</Text>
