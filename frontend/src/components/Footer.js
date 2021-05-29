@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { SocialIcon } from 'react-social-icons';
+//import { SocialIcon } from 'react-social-icons';
 import { Grid, Box, Text, VStack, HStack } from '@chakra-ui/react'
 
 const Footer = () => {

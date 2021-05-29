@@ -43,5 +43,6 @@ const Collections = () => {
         </Box>
     );
 };
+
 export default Collections
 

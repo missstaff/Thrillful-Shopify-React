@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { signin, selectUser } from '../redux/userSlice';
-// import { signin } from '../actions/userActions.js';
-import { Box, Button, Input, Center, FormLabel, FormControl, Text } from '@chakra-ui/react';
-import MessageBox from '../components/MessageBox.js';
+import { useDispatch, useSelector } from 'react-redux';
 import LoadingBox from '../components/LoadingBox.js';
 import '../css/form.css';
+import {
+  Box,
+  Button,
+  Input,
+  Center,
+  FormLabel,
+  FormControl,
+  Text
+} from '@chakra-ui/react';
 
 
 export const Signin = () => {
@@ -23,50 +29,31 @@ export const Signin = () => {
     : '/';
 
   const { user } = useSelector(selectUser);
-  // const userSignin = useSelector((state) => state.userSignin);
-  // const { userInfo, loading, error } = userSignin;
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signin(email, password));
-    // if(!userInfo) {
-    //   alert("Invalid username or password")
-    // }
   };
 
   useEffect(() => {
     if (user.info) {
-    //  if (userInfo) {
-        history.push(redirect);
+      history.push(redirect);
     }
   }, [history, redirect, user.info]);
 
 
-  // useEffect(() => {
-  //   try {
-  //   if (userInfo) {
-  //    history.push('/all-products')
-  //   } 
-  //   } catch (e) {
-  //     alert(e.messagae);
-  //   }
-  //   }, [history, userInfo]);
-
-
-
-
   return (
-    <Box maxW="lg" borderRadius="lg"  overflow="hidden" className="signinForm" marginTop="10px" marginBottom="10px">
+    <Box maxW="lg" borderRadius="lg" overflow="hidden" className="signinForm" marginTop="10px" marginBottom="10px">
       <Center fontSize="25px">
         Sign In
-            </Center>
+      </Center>
       {/* Sign In is Email and PW 
     Link to forgot pw
     Link to register if not alreay
     */}
-     {/* {loading && <LoadingBox></LoadingBox>} */}
-     {user.status === 'loading' && <LoadingBox></LoadingBox>}
+      {/* {loading && <LoadingBox></LoadingBox>} */}
+      {user.status === 'loading' && <LoadingBox></LoadingBox>}
 
       <FormControl className="form">
         <FormLabel htmlFor="email">Email address</FormLabel>
@@ -93,7 +80,7 @@ export const Signin = () => {
 
         <Text>
           Forgot Password
-      </Text>
+        </Text>
 
         <br></br>
 
@@ -102,11 +89,14 @@ export const Signin = () => {
             mt={4}
             color="white" backgroundColor="#ff0000"
             type="submit"
+            _focus="none"
+            _hover={{color: "none"}}
+            _active={{ bg: "none" }}
+            border="none"
             onClick={submitHandler}
           >
-            Sign In
+          Sign In
         </Button>
-
         </Center>
 
         <Center>
@@ -114,11 +104,9 @@ export const Signin = () => {
             New customer?
           <Link to="/Register" style={{ color: "#ff0000" }}> Create your account</Link>
           </Text>
-
         </Center>
 
       </FormControl>
-
     </Box>
   )
 }

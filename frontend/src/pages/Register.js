@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { register, selectUser } from '../redux/userSlice';
-// import { register } from '../actions/userActions.js';
-import { Box, Button, Input, Center, FormLabel, FormControl, Heading, Text } from '@chakra-ui/react';
-import MessageBox from '../components/MessageBox.js';
 import LoadingBox from '../components/LoadingBox.js';
 import '../css/form.css';
+import {
+  Box,
+  Button,
+  Input,
+  Center,
+  FormLabel,
+  FormControl,
+  Text
+} from '@chakra-ui/react';
 
 
 export const Register = () => {
@@ -26,9 +32,7 @@ export const Register = () => {
     ? history.location.search.split('=')[1]
     : '/';
 
-    const { user } = useSelector(selectUser);
-  // const userRegister = useSelector((state) => state.userRegister);
-  // const { userInfo, loading, error } = userRegister;
+  const { user } = useSelector(selectUser);
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
@@ -42,7 +46,6 @@ export const Register = () => {
 
   useEffect(() => {
     if (user.info) {
-      // if (userInfo) {
       history.push(redirect);
     }
   }, [history, redirect, user.info]);
@@ -52,7 +55,7 @@ export const Register = () => {
     <Box maxW="lg" borderRadius="lg" overflow="hidden" className="registerForm" marginTop="10px" marginBottom="10px">
       <Center fontSize="25px">
         Register
-            </Center>
+      </Center>
       {/* Sign In is Email and PW 
     Link to forgot pw
     Link to register if not alreay
@@ -85,7 +88,6 @@ export const Register = () => {
         ></Input>
 
         <br></br>
-
 
         <FormLabel htmlFor="username">Username</FormLabel>
         <Input
@@ -131,20 +133,24 @@ export const Register = () => {
 
         <Text>
           Forgot Password
-      </Text>
+        </Text>
 
         <br></br>
 
         <Center>
           <Button
             mt={4}
-            color="white" backgroundColor="#ff0000"
+            color="white" 
+            backgroundColor="#ff0000"
+            _focus="none"
+            _hover={{color: "none"}}
+            _active={{ bg: "none" }}
+            border="none"
             type="submit"
             onClick={submitHandler}
           >
             Register
         </Button>
-
         </Center>
 
         <Center>
@@ -152,11 +158,9 @@ export const Register = () => {
             Already have an account?
           <Link to="/Signin" style={{ color: "#ff0000" }}>Login</Link>
           </Text>
-
         </Center>
 
       </FormControl>
-
     </Box>
   )
 }

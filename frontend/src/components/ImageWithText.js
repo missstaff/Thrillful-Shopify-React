@@ -1,5 +1,12 @@
 import React from 'react';
-import { Box, Flex, Button, Text, Image, Heading } from '@chakra-ui/react';
+import {
+    Box,
+    Flex,
+    Button,
+    Text,
+    Image,
+    Heading
+} from '@chakra-ui/react';
 
 
 const ImageWithText = ({ reverse, image, heading, text }) => {
@@ -18,14 +25,14 @@ const ImageWithText = ({ reverse, image, heading, text }) => {
                         {text && text}
                     </Text>
                     <Button
-                    w='10rem'
-                    backgroundColor='#ff0000'
-                    _hover={{ opacity: '70%'}}
+                        w='10rem'
+                        backgroundColor='#ff0000'
+                        _hover={{ opacity: '70%' }}
                     >
                         Buy Now
                     </Button>
                 </Flex>
-            </Flex>            
+            </Flex>
         </Box>
     )
 }
