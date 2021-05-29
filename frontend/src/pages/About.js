@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Center, Image, Grid, GridItem, Text } from '@chakra-ui/react';
+import { 
+    Box, 
+    Image, 
+    Grid, 
+    GridItem, 
+    Text 
+} from '@chakra-ui/react';
 
 const About = () => {
     return (

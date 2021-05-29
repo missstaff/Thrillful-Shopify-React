@@ -21,6 +21,7 @@ import { useSelector } from 'react-redux';
 import { selectMessage } from './redux/messageSlice';
 import Profile from './pages/Profile.js';
 import Admin from './pages/Admin.js';
+import AdminHelp from './pages/AdminHelp.js';
 
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/adminbanner/">
             <AdminBanner />
+          </Route>
+          <Route path="/adminhelp/">
+            <AdminHelp />
           </Route>
           <Route path="/admin/">
             <Admin />
