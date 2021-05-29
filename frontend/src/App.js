@@ -17,14 +17,16 @@ import Footer from './components/Footer.js';
 import Banner from './pages/Banner.js';
 import About from './pages/About.js';
 import MessageBox from './components/MessageBox';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectMessage } from './redux/messageSlice';
+import Profile from './pages/Profile.js';
+import Admin from './pages/Admin.js';
 
 
 function App() {
   const { message } = useSelector(selectMessage);
 
-  console.log(message);
+  //console.log(message);
 
   return (
 
@@ -49,11 +51,17 @@ function App() {
           <Route path="/adminbanner/">
             <AdminBanner />
           </Route>
+          <Route path="/admin/">
+            <Admin />
+          </Route>
           <Route path="/signin/" component={Signin}>
             <Signin />
           </Route>
           <Route path="/register/">
             <Register />
+          </Route>
+          <Route path="/profile/">
+            <Profile />
           </Route>
           <Route path="/all-products/">
             <Products />

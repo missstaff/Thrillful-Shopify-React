@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signout, selectUser } from "../redux/userSlice";
-// import { signout } from '../actions/userActions.js';
 import { Link } from "react-router-dom";
 import { ShopContext } from "../context/shopContext";
 import {
@@ -16,7 +15,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { MdMenu, MdShoppingCart, MdAccountCircle } from "react-icons/md";
+import { MdMenu, MdShoppingCart } from "react-icons/md";
 import { useContext } from "react";
 import "../index.css";
 import "../css/navbar.css";
