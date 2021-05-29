@@ -24,9 +24,6 @@ import "../css/navbar.css";
 const NavBar = () => {
   const { openCart, openMenu, checkout } = useContext(ShopContext);
 
-  //to change state of login on navbar//
-  // const userSignin = useSelector((state) => state.userSignin);
-  // const { userInfo } = userSignin;
   const { user } = useSelector(selectUser);
   const dispatch = useDispatch();
   const signoutHandler = () => {
@@ -81,18 +78,18 @@ const NavBar = () => {
             // {userInfo ? (
             <>
               <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                <MenuButton bgColor="#000000" color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }} as={Button} rightIcon={<ChevronDownIcon />}>
                   {user.info.first_name}
                 </MenuButton>
-                <MenuList>
+                <MenuList border="none" bgColor="#000000">
                   {user.info.isAdmin === true ? (
-                    <MenuItem>
+                    <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
                       <Link to="/AdminBanner">AdminDashboard</Link>
                     </MenuItem>
                   ) : (
                     <MenuItem>Profile</MenuItem>
                   )}
-                  <MenuItem onClick={signoutHandler}>
+                  <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }} onClick={signoutHandler}>
                     {/* <Link to="#signout" > */}
                     <Text>Sign out</Text>
                     {/* </Link> */}
@@ -102,7 +99,7 @@ const NavBar = () => {
             </>
           ) : (
             <Link to="/signin">
-              <Button>
+              <Button bgColor="#000000" color="#ffffff" _hover={{ color: "none" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
                 <Text>Sign In</Text>
               </Button>
             </Link>
