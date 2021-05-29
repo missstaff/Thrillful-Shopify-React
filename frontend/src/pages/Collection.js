@@ -30,19 +30,19 @@ const Collection = () => {
                     collection.map(product => (
                         <Link to={`product/${product.handle}`} key={product.id}>
                             <Center>
-                            <Box _hover={{ opacity: '80%' }} textAlign='center'/*move text here*/>
-                                <Image src={product.images[0].src} p="2rem" h="25rem" w="25rem" />
-                               <Center>
-                               <Text style={{fontWeight:"bold"}}>
-                                        {product.title}
-                                    </Text>
-                              </Center>
-                              <Center>
-                                    <Text>
-                                        ${product.variants[0].price}
-                                    </Text>
-                                </Center>
-                            </Box>
+                                <Box _hover={{ opacity: '80%' }} textAlign='center'/*move text here*/>
+                                    <Image src={product.images[0].src} p="2rem" h="25rem" w="25rem" />
+                                    <Center>
+                                        <Text style={{ fontWeight: "bold" }}>
+                                            {product.title}
+                                        </Text>
+                                    </Center>
+                                    <Center>
+                                        <Text>
+                                            ${product.variants[0].price}
+                                        </Text>
+                                    </Center>
+                                </Box>
                             </Center>
                         </Link>
                     ))
@@ -51,4 +51,5 @@ const Collection = () => {
         </Box >
     )
 };
+
 export default Collection

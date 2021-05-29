@@ -1,27 +1,27 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
-import Home from './pages/Home.js';
-import Products from './pages/Products.js';
-import Product from './pages/Product.js';
-import Collections from './pages/Collections.js';
-import Collection from './pages/Collection.js';
-import Contact from './pages/Contact.js';
+import { selectMessage } from './redux/messageSlice';
+import { useSelector } from 'react-redux';
+import About from './pages/About.js';
+import Admin from './pages/Admin.js';
 import AdminBanner from './pages/AdminBanner.js';
-import Signin from './pages/Signin.js';
-import Register from './pages/Register';
+import AdminHelp from './pages/AdminHelp.js';
+import Banner from './pages/Banner.js';
 import Cart from './components/Cart.js';
-import NavBar from './components/NavBar.js';
-import NavMenu from './components/NavMenu.js';
+import Collection from './pages/Collection.js';
+import Collections from './pages/Collections.js';
+import Contact from './pages/Contact.js';
 import Footer from './components/Footer.js';
 // import Hero from './components/Hero.js';
-import Banner from './pages/Banner.js';
-import About from './pages/About.js';
+import Home from './pages/Home.js';
 import MessageBox from './components/MessageBox';
-import { useSelector } from 'react-redux';
-import { selectMessage } from './redux/messageSlice';
+import NavBar from './components/NavBar.js';
+import NavMenu from './components/NavMenu.js';
+import Product from './pages/Product.js';
+import Products from './pages/Products.js';
 import Profile from './pages/Profile.js';
-import Admin from './pages/Admin.js';
-import AdminHelp from './pages/AdminHelp.js';
+import Register from './pages/Register';
+import Signin from './pages/Signin.js';
 
 
 function App() {
