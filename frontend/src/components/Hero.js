@@ -1,18 +1,18 @@
 import React from 'react';
 import { withRouter } from "react-router";
-import { Box, Text, Image } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 
 
 /*Banner is currently applied to all pages via Apps.js but can be applied individually*/
 const Hero = () => {
     let path = window.location.pathname;
-    if (path === '/about' ||path === '/contact' || path === '/signin' || path === '/Register') {
+    if (path === '/about' || path === '/contact' || path === '/signin' || path === '/Register') {
         return false;
     }
     return (
         <Box >
             <Image src="/../ThrillfulBanner.png" h="250px " w="100%"/*banner image path here*/
-               objectPosition={['top', 'center']}
+                objectPosition={['top', 'center']}
             />
         </Box>
     )

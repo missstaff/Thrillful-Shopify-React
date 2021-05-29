@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ShopContext } from '../context/shopContext';
 import {
     Drawer,
     DrawerBody,
@@ -10,9 +10,9 @@ import {
     DrawerContent,
     DrawerCloseButton,
     VStack
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
-import { ShopContext } from '../context/shopContext'
+
 
 const NavMenu = () => {
 
@@ -47,8 +47,7 @@ const NavMenu = () => {
                     </DrawerFooter>
                    </VStack>
                 </DrawerContent>
-            </DrawerOverlay>
-            
+            </DrawerOverlay> 
         </Drawer>
     )
 }
