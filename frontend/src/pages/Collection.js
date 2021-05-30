@@ -21,7 +21,7 @@ const Collection = () => {
     if (!collection) return <div>There are no collections.</div>;
 
     return (
-        <Box p="2rem">
+        <Box p="5rem">
             <Center>
                 <Heading>{collectionName}</Heading>
             </Center>

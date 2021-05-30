@@ -3,11 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signout, selectUser } from "../redux/userSlice";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../context/shopContext";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { MdMenu, MdShoppingCart } from "react-icons/md";
-import { useContext } from "react";
-import "../index.css";
-import "../css/navbar.css";
 import {
   Flex,
   Text,
@@ -19,7 +14,11 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { MdMenu, MdShoppingCart } from "react-icons/md";
+import { useContext } from "react";
+import "../index.css";
+import "../css/navbar.css";
 
 const NavBar = () => {
   const { openCart, openMenu, checkout } = useContext(ShopContext);
