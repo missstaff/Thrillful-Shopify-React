@@ -54,7 +54,7 @@ const Contact = () => {
     //Handel submit in form tag and submit on type for the buttonIf not in the form element it can be placed in the button element
 
     return (
-        <Box maxW="lg" borderRadius="lg" overflow="hidden" className="contactForm" marginTop="10px" marginBottom="10px">
+        <Box maxW="lg" borderRadius="lg" overflow="hidden" className="contactForm" marginTop="10px" marginBottom="5rem">
             <Center fontSize="25px">
                 Contact Us
             </Center>
