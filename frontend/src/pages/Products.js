@@ -14,7 +14,7 @@ const Products = () => {
 
     if (!products) return <div>Loading...</div>
     return (
-        <Box p="2rem">
+        <Box p="5rem">
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                 {
                     products.map(product => (

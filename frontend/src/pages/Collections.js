@@ -18,7 +18,7 @@ const Collections = () => {
     if (!collections) return <div>There are no collections</div>;
 
     return (
-        <Box p="2rem">
+        <Box p="5rem">
             <Center>
                 <Heading>All Categories</Heading>
             </Center>
@@ -43,6 +43,5 @@ const Collections = () => {
         </Box>
     );
 };
-
 export default Collections
 

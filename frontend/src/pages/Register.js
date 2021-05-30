@@ -52,7 +52,7 @@ export const Register = () => {
 
   // className="SigninForm"
   return (
-    <Box maxW="lg" borderRadius="lg" overflow="hidden" className="registerForm" marginTop="10px" marginBottom="10px">
+    <Box maxW="lg" borderRadius="lg" overflow="hidden" className="registerForm" marginTop="10px" marginBottom="5rem">
       <Center fontSize="25px">
         Register
       </Center>

@@ -17,7 +17,7 @@ const Home = () => {
     if (!collections) return <div>There are no collections</div>;
 
     return (
-        <Box>
+        <Box marginBottom="5rem">
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]} m="auto">
                 {
                     collections.map(collection => (
