@@ -97,6 +97,32 @@ export const register =
     }
   };
 
+  export const update =
+  (first_name, last_name, username, email, password) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      const { data } = await axios.put("/api/users/profile", {
+        first_name,
+        last_name,
+        username,
+        email,
+        password,
+      });
+      dispatch(loggedIn(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
+    } catch (err) {
+      //Dispatch loggedout so it doesn't continue to spin.
+      dispatch(loggedOut());
+      dispatch(
+        error(
+          err.response && err.response.data.message
+            ? err.response.data.message
+            : err.message
+        )
+      );
+    }
+  };
+
 export const signout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   localStorage.removeItem("cartItems");

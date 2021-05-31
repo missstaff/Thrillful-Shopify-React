@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { selectUser } from '../redux/userSlice';
+import { update, selectUser } from '../redux/userSlice';
 import LoadingBox from '../components/LoadingBox.js';
 import '../css/form.css';
 import {
@@ -32,7 +32,7 @@ const Profile = () => {
         if (password !== confirmPassword) {
             alert("Password and confirm password do not match")
         } else {
-            dispatch(/*updateUser*/(first_name, last_name, username, email, password));
+            dispatch(update(first_name, last_name, username, email, password));
         }
     };
 
@@ -49,7 +49,7 @@ const Profile = () => {
 
             <FormControl className="form">
 
-                <FormLabel htmlFor="first_name">{user.info.first_name}</FormLabel>
+                <FormLabel htmlFor="first_name">First Name</FormLabel>
                 <Input
                     type="text"
                     id="first_name"
@@ -59,7 +59,7 @@ const Profile = () => {
 
                 <br></br>
 
-                <FormLabel htmlFor="last_name">{user.info.last_name}</FormLabel>
+                <FormLabel htmlFor="last_name">Last Name</FormLabel>
                 <Input
                     type="text"
                     id="last_name"
@@ -69,7 +69,7 @@ const Profile = () => {
 
                 <br></br>
 
-                <FormLabel htmlFor="username">{user.info.username}</FormLabel>
+                <FormLabel htmlFor="username">Username</FormLabel>
                 <Input
                     type="text"
                     id="username"
@@ -79,7 +79,7 @@ const Profile = () => {
 
                 <br></br>
 
-                <FormLabel htmlFor="email">{user.info.email}</FormLabel>
+                <FormLabel htmlFor="email">Email address</FormLabel>
                 <Input
                     type="email"
                     id="email"
