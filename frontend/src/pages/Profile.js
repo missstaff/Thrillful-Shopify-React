@@ -42,10 +42,6 @@ const Profile = () => {
             <Center fontSize="25px">
                 Update Profile
             </Center>
-            {/* Sign In is Email and PW 
-            Link to forgot pw
-            Link to register if not alreay
-            */}
             {user.status === 'loading' && <LoadingBox></LoadingBox>}
             {/* {loading && <LoadingBox></LoadingBox>} */}
             {/* Putting messages in front to be used anywhere */}
@@ -53,7 +49,7 @@ const Profile = () => {
 
             <FormControl className="form">
 
-                <FormLabel htmlFor="first_name">First Name</FormLabel>
+                <FormLabel htmlFor="first_name">{user.info.first_name}</FormLabel>
                 <Input
                     type="text"
                     id="first_name"
@@ -63,7 +59,7 @@ const Profile = () => {
 
                 <br></br>
 
-                <FormLabel htmlFor="last_name">Last Name</FormLabel>
+                <FormLabel htmlFor="last_name">{user.info.last_name}</FormLabel>
                 <Input
                     type="text"
                     id="last_name"
@@ -73,7 +69,7 @@ const Profile = () => {
 
                 <br></br>
 
-                <FormLabel htmlFor="username">Username</FormLabel>
+                <FormLabel htmlFor="username">{user.info.username}</FormLabel>
                 <Input
                     type="text"
                     id="username"
@@ -83,7 +79,7 @@ const Profile = () => {
 
                 <br></br>
 
-                <FormLabel htmlFor="email">Email address</FormLabel>
+                <FormLabel htmlFor="email">{user.info.email}</FormLabel>
                 <Input
                     type="email"
                     id="email"
