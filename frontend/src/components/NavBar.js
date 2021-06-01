@@ -77,19 +77,43 @@ const NavBar = () => {
             // {userInfo ? (
             <>
               <Menu>
-                <MenuButton bgColor="#000000" color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }} as={Button} rightIcon={<ChevronDownIcon />}>
-                  {user.info.first_name}
+                <MenuButton
+                  bgColor="#000000"
+                  color="#ffffff"
+                  _hover={{ color: "#ff0000" }}
+                  _focus={{ bg: "none" }}
+                  _active={{ bg: "none" }}
+                  as={Button}
+                  rightIcon={<ChevronDownIcon />}
+                >
+                  {user.info.username}
                 </MenuButton>
                 <MenuList border="none" bgColor="#000000">
                   {user.info.isAdmin === true && (
-                    <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
+                    <MenuItem
+                      color="#ffffff"
+                      _hover={{ color: "#ff0000" }}
+                      _focus={{ bg: "none" }}
+                      _active={{ bg: "none" }}
+                    >
                       <Link to="/admin">AdminDashboard</Link>
                     </MenuItem>
                   )}
-                  <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
+                  <MenuItem
+                    color="#ffffff"
+                    _hover={{ color: "#ff0000" }}
+                    _focus={{ bg: "none" }}
+                    _active={{ bg: "none" }}
+                  >
                     <Link to="/profile">Profile</Link>
                   </MenuItem>
-                  <MenuItem color="#ffffff" _hover={{ color: "#ff0000" }} _focus={{ bg: "none" }} _active={{ bg: "none" }} onClick={signoutHandler}>
+                  <MenuItem
+                    color="#ffffff"
+                    _hover={{ color: "#ff0000" }}
+                    _focus={{ bg: "none" }}
+                    _active={{ bg: "none" }}
+                    onClick={signoutHandler}
+                  >
                     {/* <Link to="#signout" > */}
                     <Text>Sign out</Text>
                     {/* </Link> */}
@@ -99,7 +123,13 @@ const NavBar = () => {
             </>
           ) : (
             <Link to="/signin">
-              <Button bgColor="#000000" color="#ffffff" _hover={{ color: "none" }} _focus={{ bg: "none" }} _active={{ bg: "none" }}>
+              <Button
+                bgColor="#000000"
+                color="#ffffff"
+                _hover={{ color: "none" }}
+                _focus={{ bg: "none" }}
+                _active={{ bg: "none" }}
+              >
                 <Text>Sign In</Text>
               </Button>
             </Link>
