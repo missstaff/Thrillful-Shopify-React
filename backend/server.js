@@ -7,6 +7,7 @@ import userRouter from './routers/userRouter.js';
 import imageRouter from './routers/imageRouter.js'
 //import morgan from 'morgan';
 import contactRouter from './routers/contact.router.js';
+import productRouter from './routers/productRouter.js';
 import cors from 'cors';
 
 const port = process.env.PORT || 5000;
@@ -32,6 +33,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 app.use('/api/users', userRouter);
 app.use('/api/contact', contactRouter);
+app.use('/api/products',productRouter);
 
 //IMAGES
 app.use("/img", imageRouter)

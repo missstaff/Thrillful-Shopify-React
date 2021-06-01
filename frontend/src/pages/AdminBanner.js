@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/banner.css';
 import { Box, Button, Input } from '@chakra-ui/react';
 //import axios from 'axios';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 
