@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signout, selectUser } from "../redux/userSlice";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ShopContext } from "../context/shopContext";
 import {
   Flex,
@@ -21,13 +21,22 @@ import "../index.css";
 import "../css/navbar.css";
 
 const NavBar = () => {
+  const history = useHistory();
   const { openCart, openMenu, checkout } = useContext(ShopContext);
+
+  const redirect = "/";
 
   const { user } = useSelector(selectUser);
   const dispatch = useDispatch();
   const signoutHandler = () => {
     dispatch(signout());
   };
+
+  useEffect(() => {
+    if (!user.info) {
+      history.push(redirect);
+    }
+  }, [history, redirect, user.info]);
 
   console.log(user);
 
