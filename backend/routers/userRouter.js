@@ -28,6 +28,7 @@ userRouter.post(
           email: user.email,
           first_name: user.first_name,
           last_name: user.last_name,
+          username: user.username,
           isAdmin: user.isAdmin,
           token: generateToken(user),
         });
