@@ -26,9 +26,14 @@ const NavBar = () => {
 
   const redirect = "/";
   const profile = "/profile";
+  const adminDashboard = "/Admin";
 
   const { user } = useSelector(selectUser);
   const dispatch = useDispatch();
+
+  const adminDashHandler = () => {
+    history.push(adminDashboard);
+  };
 
   const profileHandler = () => {
     history.push(profile);
@@ -110,6 +115,7 @@ const NavBar = () => {
                       _hover={{ color: "#ff0000" }}
                       _focus={{ bg: "none" }}
                       _active={{ bg: "none" }}
+                      onClick={adminDashHandler}
                     >
                       <Link to="/admin">AdminDashboard</Link>
                     </MenuItem>
